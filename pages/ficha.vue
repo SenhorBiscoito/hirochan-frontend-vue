@@ -127,6 +127,28 @@
               outlined
             ></v-textarea>
           </v-col>
+          <v-col cols="12" sm="6">
+            <v-file-input
+              v-model="form.image"
+              :rules="rules.image"
+              accept="image/png, image/jpeg, image/gif"
+              placeholder="Foto do seu personagem 📸"
+              outlined
+              append-icon="mdi-camera"
+              label="Avatar"
+            ></v-file-input>
+          </v-col>
+          <v-col cols="12" sm="6">
+            <v-file-input
+              v-model="form.thumbnail"
+              :rules="rules.thumbnail"
+              accept="image/png, image/jpeg, image/gif"
+              placeholder="Foto da thumb 📸"
+              outlined
+              append-icon="mdi-camera"
+              label="Thumb"
+            ></v-file-input>
+          </v-col>
         </v-row>
       </v-container>
       <v-card-actions class="d-flex justify-end">
@@ -151,13 +173,14 @@ export default {
       personalidade: "",
       gosta_de: "",
       nao_gosta_de: "",
-      thumbnail: "",
-      image: ""
+      thumbnail: null,
+      image: null
     });
 
     return {
       form: Object.assign({}, defaultForm),
       rules: {
+        ficha: [val => (val || "").length > 0 || "Esse campo é obrigatório"],
         nome: [val => (val || "").length > 0 || "Esse campo é obrigatório"],
         idade: [val => val < 40 || `Mentiroso!`],
         genero: [val => (val || "").length > 0 || "Esse campo é obrigatório"],
@@ -169,7 +192,15 @@ export default {
         nao_gosta_de: [
           val => (val || "").length > 0 || "Esse campo é obrigatório"
         ],
-        historia: [val => (val || "").length > 0 || "Esse campo é obrigatório"]
+        historia: [val => (val || "").length > 0 || "Esse campo é obrigatório"],
+        image: [
+          value =>
+            !value || value.size < 1000000 || "Foto deve ser menor que 1 MB!"
+        ],
+        thumbnail: [
+          value =>
+            !value || value.size < 1000000 || "Foto deve ser menor que 1 MB!"
+        ]
       },
       generos: [
         "Masculino",
@@ -185,6 +216,7 @@ export default {
         "Não binário",
         "Assexuado"
       ],
+      snackbar: false,
       defaultForm
     };
   },
@@ -211,7 +243,9 @@ export default {
     },
     submit() {
       this.snackbar = true;
-      this.resetForm();
+      this.$refs.form.validate();
+
+      console.log(this.form);
     }
   }
 };
