@@ -52,23 +52,27 @@
           <v-col cols="12" sm="4">
             <v-select
               outlined
-              v-model="form.genero"
+              v-model="form.id_genero"
               :items="generos"
-              :rules="rules.genero"
+              :rules="rules.id_genero"
               label="Genero"
               placeholder="Qual é o seu genero? 😮"
+              item-text="nome"
+              item-value="id"
               required
             ></v-select>
           </v-col>
           <!-- Sexo -->
           <v-col cols="12" sm="4">
             <v-select
-              v-model="form.sexo"
+              v-model="form.id_sexo"
               :items="sexos"
-              :rules="rules.sexo"
+              :rules="rules.id_sexo"
               outlined
               placeholder="Qual é o seu sexo? 😏"
               label="Sexo"
+              item-text="nome"
+              item-value="id"
               required
             ></v-select>
           </v-col>
@@ -88,15 +92,9 @@
               v-model="form.poderes"
               placeholder="Você tem poderes? 😮"
               :rules="rules.poderes"
+              label="Poderes"
               outlined
-            >
-              <template v-slot:label>
-                <div>
-                  Poderes
-                  <!-- <small>(optional)</small> -->
-                </div>
-              </template>
-            </v-textarea>
+            ></v-textarea>
           </v-col>
           <!-- Gosta  -->
           <v-col cols="12" sm="6">
@@ -122,6 +120,7 @@
           <v-col cols="12">
             <v-textarea
               v-model="form.historia"
+              :rules="rules.historia"
               label="História"
               placeholder="Manda aí a história do seu personagem😎"
               outlined
@@ -153,7 +152,7 @@
       </v-container>
       <v-card-actions class="d-flex justify-end">
         <v-btn @click="resetForm" class="warning">Resetar</v-btn>
-        <v-btn :disabled="!formIsValid" class="mr-4 primary" @click="submit">Enviar</v-btn>
+        <v-btn class="mr-4 primary" @click="submit">Enviar</v-btn>
       </v-card-actions>
     </v-form>
   </v-card>
@@ -166,8 +165,8 @@ export default {
       ficha: "",
       nome: "",
       idade: 18,
-      genero: "",
-      sexo: "",
+      id_genero: "",
+      id_sexo: "",
       historia: "",
       poderes: "",
       personalidade: "",
@@ -183,11 +182,12 @@ export default {
         ficha: [val => (val || "").length > 0 || "Esse campo é obrigatório"],
         nome: [val => (val || "").length > 0 || "Esse campo é obrigatório"],
         idade: [val => val < 40 || `Mentiroso!`],
-        genero: [val => (val || "").length > 0 || "Esse campo é obrigatório"],
-        sexo: [val => (val || "").length > 0 || "Esse campo é obrigatório"],
+        id_genero: [val => (val || "") > 0 || "Esse campo é obrigatório"],
+        id_sexo: [val => (val || "") > 0 || "Esse campo é obrigatório"],
         personalidade: [
           val => (val || "").length > 0 || "Esse campo é obrigatório"
         ],
+        poderes: [val => (val || "").length > 0 || "Esse campo é obrigatório"],
         gosta_de: [val => (val || "").length > 0 || "Esse campo é obrigatório"],
         nao_gosta_de: [
           val => (val || "").length > 0 || "Esse campo é obrigatório"
@@ -195,7 +195,10 @@ export default {
         historia: [val => (val || "").length > 0 || "Esse campo é obrigatório"],
         image: [
           value =>
-            !value || value.size < 1000000 || "Foto deve ser menor que 1 MB!"
+            !value ||
+            (value.size < 1000000 && value != null) ||
+            "Esse campo é obrigatório" ||
+            "Foto deve ser menor que 1 MB!"
         ],
         thumbnail: [
           value =>
@@ -203,18 +206,48 @@ export default {
         ]
       },
       generos: [
-        "Masculino",
-        "Feminino",
-        "Transgênero (Futa)",
-        "Não binário",
-        "Assexuado"
+        {
+          id: 1,
+          nome: "Assexuado"
+        },
+        {
+          id: 2,
+          nome: "Feminino"
+        },
+        {
+          id: 3,
+          nome: "Masculino"
+        },
+        {
+          id: 4,
+          nome: "Não binário"
+        },
+        {
+          id: 5,
+          nome: "Transgênero (Futa)"
+        }
       ],
       sexos: [
-        "Masculino",
-        "Feminino",
-        "Transgênero (Futa)",
-        "Não binário",
-        "Assexuado"
+        {
+          id: 1,
+          nome: "Assexual"
+        },
+        {
+          id: 2,
+          nome: "Gay"
+        },
+        {
+          id: 3,
+          nome: "Hétero"
+        },
+        {
+          id: 4,
+          nome: "Lésbica"
+        },
+        {
+          id: 5,
+          nome: "Pansexual"
+        }
       ],
       snackbar: false,
       defaultForm
@@ -242,10 +275,12 @@ export default {
       this.$refs.form.reset();
     },
     submit() {
-      this.snackbar = true;
-      this.$refs.form.validate();
-
-      console.log(this.form);
+      // Quando o formulário for válido, faça a requisição
+      if (this.$refs.form.validate()) {
+        this.snackbar = true;
+        alert("formulario enviado");
+        console.log(this.form);
+      }
     }
   }
 };
