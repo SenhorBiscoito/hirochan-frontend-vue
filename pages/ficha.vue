@@ -8,19 +8,9 @@
     <v-form ref="form" @submit.prevent="submit">
       <v-container fluid>
         <v-row>
+          <v-col cols="12" sm="4"></v-col>
           <v-col cols="12" sm="4">
             <p class="display-1 text--primary text-center">Ficha de RP</p>
-          </v-col>
-          <!-- Ficha -->
-          <v-col cols="12" sm="4">
-            <v-text-field
-              v-model="form.ficha"
-              :rules="rules.ficha"
-              outlined
-              label="Ficha"
-              placeholder="Digite o nome da sua ficha do discord 😉"
-              required
-            ></v-text-field>
           </v-col>
           <!-- Idade -->
           <v-col cols="12" sm="4">
@@ -159,10 +149,11 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     const defaultForm = Object.freeze({
-      ficha: "",
       nome: "",
       idade: 18,
       id_genero: "",
@@ -179,7 +170,6 @@ export default {
     return {
       form: Object.assign({}, defaultForm),
       rules: {
-        ficha: [val => (val || "").length > 0 || "Esse campo é obrigatório"],
         nome: [val => (val || "").length > 0 || "Esse campo é obrigatório"],
         idade: [val => val < 40 || `Mentiroso!`],
         id_genero: [val => (val || "") > 0 || "Esse campo é obrigatório"],
@@ -274,12 +264,20 @@ export default {
       this.form = Object.assign({}, this.defaultForm);
       this.$refs.form.reset();
     },
-    submit() {
+    async submit() {
       // Quando o formulário for válido, faça a requisição
       if (this.$refs.form.validate()) {
         this.snackbar = true;
-        alert("formulario enviado");
+
         console.log(this.form);
+        console.log(this.form.image);
+        console.log(this.form.image[0]);
+
+        let { data } = await axios.post(`http://localhost:8080/v1/fichas`, {
+          ...this.form
+        });
+
+        console.log(data);
       }
     }
   }
