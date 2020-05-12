@@ -164,7 +164,9 @@ export default {
       gosta_de: "",
       nao_gosta_de: "",
       thumbnail: null,
-      image: null
+      image: null,
+      // id_server: 123,
+      // id_user: 456
     });
 
     return {
@@ -266,20 +268,34 @@ export default {
     },
     async submit() {
       // Quando o formulário for válido, faça a requisição
-      if (this.$refs.form.validate()) {
-        this.snackbar = true;
+      // if (this.$refs.form.validate()) {
+      this.snackbar = true;
 
-        console.log(this.form);
-        console.log(this.form.image);
-        console.log(this.form.image[0]);
+      console.log(this.form);
 
-        let { data } = await axios.post(`http://localhost:8080/v1/fichas`, {
-          ...this.form
-        });
+      let formData = new FormData();
+      formData.append("image", this.form.image, this.form.image.name);
+      formData.append(
+        "thumbnail",
+        this.form.thumbnail,
+        this.form.thumbnail.name
+      );
 
-        console.log(data);
-      }
+      formData.append("data", this.form);
+
+      axios({
+        method: "post",
+        url: `http://localhost:8080/api/v1/fichas`,
+        data: formData,
+        header: {
+          Accept: "application/json",
+          "Content-Type": "multipart/form-data"
+        }
+      })
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
     }
+    // }
   }
 };
 </script>
