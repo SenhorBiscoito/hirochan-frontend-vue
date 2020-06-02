@@ -1,14 +1,24 @@
 <template>
   <v-card class="mx-auto" elevation="10">
     <v-snackbar v-model="snackbar" absolute top right color="success">
-      <span>Personagem registrado com sucesso!</span>
+      <span>{{sucessMessage}}</span>
       <v-icon dark>mdi-checkbox-marked-circle</v-icon>
     </v-snackbar>
 
     <v-form ref="form" @submit.prevent="submit">
       <v-container fluid>
         <v-row>
-          <v-col cols="12" sm="4"></v-col>
+          <!-- Ficha -->
+          <v-col cols="12" sm="4">
+            <v-text-field
+              v-model="form.ficha"
+              :rules="rules.ficha"
+              outlined
+              label="Ficha"
+              placeholder="Digite o nome da sua ficha do discord 😉"
+              required
+            ></v-text-field>
+          </v-col>
           <v-col cols="12" sm="4">
             <p class="display-1 text--primary text-center">Ficha de RP</p>
           </v-col>
@@ -116,7 +126,7 @@
               outlined
             ></v-textarea>
           </v-col>
-          <v-col cols="12" sm="6">
+          <v-col cols="12" sm="12">
             <v-file-input
               v-model="form.image"
               :rules="rules.image"
@@ -125,17 +135,6 @@
               outlined
               append-icon="mdi-camera"
               label="Avatar"
-            ></v-file-input>
-          </v-col>
-          <v-col cols="12" sm="6">
-            <v-file-input
-              v-model="form.thumbnail"
-              :rules="rules.thumbnail"
-              accept="image/png, image/jpeg, image/gif"
-              placeholder="Foto da thumb 📸"
-              outlined
-              append-icon="mdi-camera"
-              label="Thumb"
             ></v-file-input>
           </v-col>
         </v-row>
@@ -154,6 +153,7 @@ import axios from "axios";
 export default {
   data() {
     const defaultForm = Object.freeze({
+      ficha: "",
       nome: "",
       idade: 18,
       id_genero: "",
@@ -165,13 +165,13 @@ export default {
       nao_gosta_de: "",
       thumbnail: null,
       image: null,
-      // id_server: 123,
-      // id_user: 456
+      id_user: "315901168679124992"
     });
 
     return {
       form: Object.assign({}, defaultForm),
       rules: {
+        ficha: [val => (val || "").length > 0 || "Esse campo é obrigatório"],
         nome: [val => (val || "").length > 0 || "Esse campo é obrigatório"],
         idade: [val => val < 40 || `Mentiroso!`],
         id_genero: [val => (val || "") > 0 || "Esse campo é obrigatório"],
@@ -191,11 +191,11 @@ export default {
             (value.size < 1000000 && value != null) ||
             "Esse campo é obrigatório" ||
             "Foto deve ser menor que 1 MB!"
-        ],
-        thumbnail: [
-          value =>
-            !value || value.size < 1000000 || "Foto deve ser menor que 1 MB!"
         ]
+        // thumbnail: [
+        //   value =>
+        //     !value || value.size < 1000000 || "Foto deve ser menor que 1 MB!"
+        // ]
       },
       generos: [
         {
@@ -242,6 +242,7 @@ export default {
         }
       ],
       snackbar: false,
+      sucessMessage: "Personagem registrado com sucesso!",
       defaultForm
     };
   },
@@ -267,35 +268,48 @@ export default {
       this.$refs.form.reset();
     },
     async submit() {
-      // Quando o formulário for válido, faça a requisição
-      // if (this.$refs.form.validate()) {
       this.snackbar = true;
+      this.scrollTop();
+      // Quando o formulário for válido, faça a requisição
+      if (this.$refs.form.validate()) {
+        if (this.form.image != null) {
+          this.snackbar = true;
 
-      console.log(this.form);
+          let formData = new FormData();
+          formData.append("image", this.form.image, this.form.image.name);
+          formData.append("ficha", this.form.ficha);
+          formData.append("id_user", this.form.id_user);
+          formData.append("id_genero", this.form.id_genero);
+          formData.append("id_sexo", this.form.id_sexo);
+          formData.append("nome", this.form.nome);
+          formData.append("gosta_de", this.form.gosta_de);
+          formData.append("historia", this.form.historia);
+          formData.append("idade", this.form.idade);
+          formData.append("nao_gosta_de", this.form.nao_gosta_de);
+          formData.append("personalidade", this.form.personalidade);
+          formData.append("poderes", this.form.poderes);
 
-      let formData = new FormData();
-      formData.append("image", this.form.image, this.form.image.name);
-      formData.append(
-        "thumbnail",
-        this.form.thumbnail,
-        this.form.thumbnail.name
-      );
-
-      formData.append("data", this.form);
-
-      axios({
-        method: "post",
-        url: `http://localhost:8080/api/v1/fichas`,
-        data: formData,
-        header: {
-          Accept: "application/json",
-          "Content-Type": "multipart/form-data"
+          console.log(formData);
+          axios({
+            method: "post",
+            url: `http://localhost:8080/api/v1/fichas`,
+            data: formData,
+            header: {
+              Accept: "application/json",
+              "Content-Type": "multipart/form-data"
+            }
+          })
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
+        } else {
+          alert("Você precisa escolher uma imagem para enviar");
         }
-      })
-        .then(res => console.log(res))
-        .catch(err => console.log(err));
+      }
+    },
+    scrollTop() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
     }
-    // }
   }
 };
 </script>
