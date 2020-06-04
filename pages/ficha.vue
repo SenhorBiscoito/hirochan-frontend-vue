@@ -58,7 +58,7 @@
               label="Genero"
               placeholder="Qual é o seu genero? 😮"
               item-text="nome"
-              item-value="id"
+              item-value="id_genero"
               required
             ></v-select>
           </v-col>
@@ -72,7 +72,7 @@
               placeholder="Qual é o seu sexo? 😏"
               label="Sexo"
               item-text="nome"
-              item-value="id"
+              item-value="id_sexo"
               required
             ></v-select>
           </v-col>
@@ -165,7 +165,7 @@ export default {
       nao_gosta_de: "",
       thumbnail: null,
       image: null,
-      id_user: "315901168679124992"
+      id_user: null
     });
 
     return {
@@ -262,45 +262,81 @@ export default {
     }
   },
 
+  mounted() {
+    (async () => {
+      await this.getSexo();
+      await this.getGenero();
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const id_user = urlParams.get("id_user");
+      const ficha = urlParams.get("ficha");
+      this.form.id_user = id_user;
+
+      // EDITAR FICHA
+      if (ficha) {
+        axios
+          .get(
+            `http://samv1-env.eba-gsznsnuk.us-east-2.elasticbeanstalk.com/api/v1/caracteristicas/${id_user}?ficha=${ficha}`
+          )
+          .then(res => {
+            const data = res.data[0];
+            console.log(data);
+            this.form = {
+              ...data,
+              id_genero: data.genero[0].id_genero,
+              id_sexo: data.sexo[0].id_sexo
+            };
+            console.log(this.form);
+          })
+          .catch(err => console.log(err));
+      }
+    })();
+  },
   methods: {
     resetForm() {
       this.form = Object.assign({}, this.defaultForm);
       this.$refs.form.reset();
     },
     async submit() {
-      this.snackbar = true;
-      this.scrollTop();
       // Quando o formulário for válido, faça a requisição
       if (this.$refs.form.validate()) {
         if (this.form.image != null) {
-          this.snackbar = true;
+          if (this.form.id_user != null) {
+            let formData = new FormData();
+            formData.append("image", this.form.image, this.form.image.name);
+            formData.append("ficha", this.form.ficha);
+            formData.append("id_user", this.form.id_user);
+            formData.append("id_genero", this.form.id_genero);
+            formData.append("id_sexo", this.form.id_sexo);
+            formData.append("nome", this.form.nome);
+            formData.append("gosta_de", this.form.gosta_de);
+            formData.append("historia", this.form.historia);
+            formData.append("idade", this.form.idade);
+            formData.append("nao_gosta_de", this.form.nao_gosta_de);
+            formData.append("personalidade", this.form.personalidade);
+            formData.append("poderes", this.form.poderes);
 
-          let formData = new FormData();
-          formData.append("image", this.form.image, this.form.image.name);
-          formData.append("ficha", this.form.ficha);
-          formData.append("id_user", this.form.id_user);
-          formData.append("id_genero", this.form.id_genero);
-          formData.append("id_sexo", this.form.id_sexo);
-          formData.append("nome", this.form.nome);
-          formData.append("gosta_de", this.form.gosta_de);
-          formData.append("historia", this.form.historia);
-          formData.append("idade", this.form.idade);
-          formData.append("nao_gosta_de", this.form.nao_gosta_de);
-          formData.append("personalidade", this.form.personalidade);
-          formData.append("poderes", this.form.poderes);
-
-          console.log(formData);
-          axios({
-            method: "post",
-            url: `http://localhost:8080/api/v1/fichas`,
-            data: formData,
-            header: {
-              Accept: "application/json",
-              "Content-Type": "multipart/form-data"
-            }
-          })
-            .then(res => console.log(res))
-            .catch(err => console.log(err));
+            console.log(formData);
+            axios({
+              method: "post",
+              url: `http://samv1-env.eba-gsznsnuk.us-east-2.elasticbeanstalk.com/api/v1/fichas`,
+              data: formData,
+              header: {
+                Accept: "application/json",
+                "Content-Type": "multipart/form-data"
+              }
+            })
+              .then(res => {
+                console.log(res);
+                this.snackbar = true;
+                this.scrollTop();
+              })
+              .catch(err => console.log(err));
+          } else {
+            alert(
+              "Você precisa usar o !ficha add no discord e não vir nesse site direto ;w;"
+            );
+          }
         } else {
           alert("Você precisa escolher uma imagem para enviar");
         }
@@ -309,6 +345,26 @@ export default {
     scrollTop() {
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
+    },
+    async getSexo() {
+      await axios
+        .get(
+          `http://samv1-env.eba-gsznsnuk.us-east-2.elasticbeanstalk.com/api/v1/sexo/`
+        )
+        .then(res => {
+          this.sexos = res.data;
+        })
+        .catch(err => console.log(err));
+    },
+    async getGenero() {
+      await axios
+        .get(
+          `http://samv1-env.eba-gsznsnuk.us-east-2.elasticbeanstalk.com/api/v1/genero/`
+        )
+        .then(res => {
+          this.generos = res.data;
+        })
+        .catch(err => console.log(err));
     }
   }
 };
