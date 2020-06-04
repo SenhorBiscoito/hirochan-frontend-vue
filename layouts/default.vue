@@ -66,12 +66,12 @@ export default {
         {
           icon: "mdi-chart-bubble",
           title: "Inspire",
-          to: "/inspire"
+          to: "/dashboard/inspire"
         },
         {
           icon: "mdi-account-circle",
           title: "Ficha",
-          to: "/ficha"
+          to: "/dashboard/ficha"
         }
       ],
       miniVariant: false,
