@@ -149,8 +149,10 @@
 
 <script>
 import axios from "axios";
+import { mapGetters } from "vuex";
 
 export default {
+  middleware: "authenticated",
   data() {
     const defaultForm = Object.freeze({
       ficha: "",
@@ -217,7 +219,10 @@ export default {
         this.form.nao_gosta_de &&
         this.form.historia
       );
-    }
+    },
+    ...mapGetters({
+      session: "session/get"
+    })
   },
 
   mounted() {
@@ -232,26 +237,20 @@ export default {
 
       // EDITAR FICHA
       if (ficha) {
-        axios
-          .get(
-            `http://localhost:8080/api/v1/caracteristicas/${id_user}?ficha=${ficha}`
-          )
-          .then(res => {
-            alert(res);
-            const data = res.data[0];
-            console.log(data);
-            this.form = {
-              ...data,
-              id_genero: data.genero[0].id_genero,
-              id_sexo: data.sexo[0].id_sexo
-            };
-            console.log(this.form);
-          })
-          .catch(err => {
-            if (err.response.status === 403) {
-            }
-            console.log(err.response);
-          });
+        const result = await this.axiosGet(
+          `/api/v1/caracteristicas/315901168679124992?ficha=Vitrex`
+        );
+
+        if (result) {
+          const data = result.data[0];
+
+          this.form = {
+            ...data,
+            id_genero: data.genero[0].id_genero,
+            id_sexo: data.sexo[0].id_sexo
+          };
+          console.log(this.form);
+        }
       }
     })();
   },
@@ -310,24 +309,14 @@ export default {
       document.documentElement.scrollTop = 0;
     },
     async getSexo() {
-      await axios
-        .get(
-          `http://samv1-env.eba-gsznsnuk.us-east-2.elasticbeanstalk.com/api/v1/sexo/`
-        )
-        .then(res => {
-          this.sexos = res.data;
-        })
-        .catch(err => console.log(err));
+      const res = await this.axiosGet(`/api/v1/sexo/`);
+
+      if (res) this.sexos = res.data;
     },
     async getGenero() {
-      await axios
-        .get(
-          `http://samv1-env.eba-gsznsnuk.us-east-2.elasticbeanstalk.com/api/v1/genero/`
-        )
-        .then(res => {
-          this.generos = res.data;
-        })
-        .catch(err => console.log(err));
+      const res = await this.axiosGet(`/api/v1/genero/`);
+
+      if (res) this.generos = res.data;
     }
   }
 };

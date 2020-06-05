@@ -65,8 +65,8 @@ export default {
         },
         {
           icon: "mdi-chart-bubble",
-          title: "Inspire",
-          to: "/dashboard/inspire"
+          title: "User",
+          to: "/dashboard/user"
         },
         {
           icon: "mdi-account-circle",

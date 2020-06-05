@@ -5,10 +5,10 @@ export default {
   /*
    ** Headers of the page
    */
-  router: {
-    // Run the middleware/user-agent.js on every page
-    middleware: 'authenticated'
-  },
+  // router: {
+  //   // Run the middleware/user-agent.js on every page
+  //   middleware: 'authenticated'
+  // },
   head: {
     titleTemplate: "%s - " + process.env.npm_package_name,
     title: process.env.npm_package_name || "",
@@ -34,7 +34,9 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [
+    { src: '~/plugins/helpers' },
+  ],
   /*
    ** Nuxt.js dev-modules
    */
@@ -63,6 +65,9 @@ export default {
         }
       }
     }
+  },
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:8080'
   },
   /*
    ** Build configuration
