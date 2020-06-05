@@ -197,50 +197,8 @@ export default {
         //     !value || value.size < 1000000 || "Foto deve ser menor que 1 MB!"
         // ]
       },
-      generos: [
-        {
-          id: 1,
-          nome: "Assexuado"
-        },
-        {
-          id: 2,
-          nome: "Feminino"
-        },
-        {
-          id: 3,
-          nome: "Masculino"
-        },
-        {
-          id: 4,
-          nome: "Não binário"
-        },
-        {
-          id: 5,
-          nome: "Transgênero (Futa)"
-        }
-      ],
-      sexos: [
-        {
-          id: 1,
-          nome: "Assexual"
-        },
-        {
-          id: 2,
-          nome: "Gay"
-        },
-        {
-          id: 3,
-          nome: "Hétero"
-        },
-        {
-          id: 4,
-          nome: "Lésbica"
-        },
-        {
-          id: 5,
-          nome: "Pansexual"
-        }
-      ],
+      generos: [],
+      sexos: [],
       snackbar: false,
       sucessMessage: "Personagem registrado com sucesso!",
       defaultForm
@@ -276,9 +234,10 @@ export default {
       if (ficha) {
         axios
           .get(
-            `http://samv1-env.eba-gsznsnuk.us-east-2.elasticbeanstalk.com/api/v1/caracteristicas/${id_user}?ficha=${ficha}`
+            `http://localhost:8080/api/v1/caracteristicas/${id_user}?ficha=${ficha}`
           )
           .then(res => {
+            alert(res);
             const data = res.data[0];
             console.log(data);
             this.form = {
@@ -288,7 +247,11 @@ export default {
             };
             console.log(this.form);
           })
-          .catch(err => console.log(err));
+          .catch(err => {
+            if (err.response.status === 403) {
+            }
+            console.log(err.response);
+          });
       }
     })();
   },

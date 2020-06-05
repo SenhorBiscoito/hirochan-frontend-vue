@@ -5,6 +5,10 @@ export default {
   /*
    ** Headers of the page
    */
+  router: {
+    // Run the middleware/user-agent.js on every page
+    middleware: 'authenticated'
+  },
   head: {
     titleTemplate: "%s - " + process.env.npm_package_name,
     title: process.env.npm_package_name || "",
@@ -67,6 +71,6 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) { }
   }
 };
