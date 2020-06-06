@@ -46,7 +46,7 @@
     </v-navigation-drawer>
     <!-- <v-footer :fixed="fixed" app>
       <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer> -->
+    </v-footer>-->
   </v-app>
 </template>
 
@@ -67,11 +67,6 @@ export default {
           icon: "mdi-chart-bubble",
           title: "User",
           to: "/dashboard/user"
-        },
-        {
-          icon: "mdi-account-circle",
-          title: "Ficha",
-          to: "/dashboard/ficha"
         }
       ],
       miniVariant: false,

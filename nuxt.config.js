@@ -30,7 +30,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ["sweetalert2/dist/sweetalert2.min.css"],
   /*
    ** Plugins to load before mounting the App
    */
@@ -44,7 +44,8 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: [],
+  modules: ['vue-sweetalert2/nuxt'],
+
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
@@ -67,6 +68,7 @@ export default {
     }
   },
   env: {
+    // baseUrl: process.env.BASE_URL || 'http://localhost:8080'
     baseUrl: process.env.BASE_URL || 'http://hirochan.us-east-2.elasticbeanstalk.com/'
   },
   /*

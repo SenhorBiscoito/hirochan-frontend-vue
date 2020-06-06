@@ -1,8 +1,8 @@
 {
-  "name": "sam-jolteon",
+  "name": "hirochan",
   "version": "1.0.0",
-  "description": "Frontend da aplicação Sam Jolteon",
-  "author": "JeanOliveiraMiranda",
+  "description": "Frontend da aplicação Hirochan",
+  "author": "SenhorBiscoito",
   "private": true,
   "scripts": {
     "dev": "nuxt",
@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "vue-sweetalert2": "^3.0.5"
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.0.0"
