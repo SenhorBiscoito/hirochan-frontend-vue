@@ -1,18 +1,5 @@
 <template>
-  <v-app light>
-    <v-toolbar fixed>
-      <!-- <v-toolbar-side-icon> -->
-      <img :src="imageLink.logo" alt="Vuetify.js" height="100%" />
-      <!-- </v-toolbar-side-icon> -->
-      <v-toolbar-title class="mx-0" v-text="title"></v-toolbar-title>
-      <p>Beta</p>
-      <v-spacer></v-spacer>
-      <v-toolbar-items>
-        <!-- <v-btn>Open jobs</v-btn> -->
-        <v-btn class="red lighten-3">Comandos</v-btn>
-        <v-btn class="blue lighten-3" :href="`${baseUrl}/auth`">Painel de Controle</v-btn>
-      </v-toolbar-items>
-    </v-toolbar>
+  <div light>
     <v-content>
       <section>
         <v-parallax
@@ -95,42 +82,6 @@
         </v-parallax>
       </section>
 
-      <section>
-        <v-container grid-list-md>
-          <v-layout row wrap>
-            <v-flex xs12 text-xs-center class="mt-5">
-              <div class="headline">Are you amazed? Stay tuned!</div>
-              <br />
-              <div>We are lunching the beta in a few time. If you want to be one of the first Endorfine users we will email you as soon as we're ready. In the beginning only few people will test before the launch. Let us know how Endorfine will help you!</div>
-            </v-flex>
-            <v-flex xs8 offset-xs2>
-              <v-card class="elevation-0 transparent">
-                <v-card-text>
-                  <v-flex xs12 v-if="!subscribed">
-                    <v-text-field
-                      filled
-                      label="Email address"
-                      :rules="emailRules"
-                      v-model="email"
-                      hint="Enter your email!"
-                      persistent-hint
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 v-if="!subscribed">
-                    <v-text-field filled multi-line label="Bio and curiosities"></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 class="text-xs-center" v-if="!subscribed">
-                    <v-btn class="blue lighten-2 mb-5" dark large @click="subscribe">Get in touch</v-btn>
-                  </v-flex>
-                  <v-flex xs12 class="text-xs-center" v-if="subscribed">
-                    <v-btn class="green lighten-2 mb-5" dark large>Welcome on board!</v-btn>
-                  </v-flex>
-                </v-card-text>
-              </v-card>
-            </v-flex>
-          </v-layout>
-        </v-container>
-      </section>
 
       <section>
         <v-parallax :src="imageLink.social_cover" height="380">
@@ -198,7 +149,7 @@
         </v-layout>
       </v-footer>
     </v-content>
-  </v-app>
+  </div>
 </template>
 
 <script>
@@ -207,14 +158,11 @@ export default {
   layout: "landing",
   data: function() {
     return {
-      title: "Hirochan ●ω●",
       imageLink: {
         main:
           "https://d.facdn.net/art/ranthfox/1501535705/1501535546.ranthfox_renamon_fanart.png",
-        sub_main:
-          "/sub_main.png",
-        logo:
-          "/logo.png",
+        sub_main: "/sub_main.png",
+        logo: "/logo.png",
         social_cover:
           "https://firebasestorage.googleapis.com/v0/b/endorfinevue.appspot.com/o/assets%2Fo-NIGHTCLUB-facebook.jpg?alt=media&token=cefc5c4c-9714-41da-9c22-f63caf5e89a4"
       },
@@ -252,7 +200,6 @@ export default {
 </script>
 
 <style scoped>
-
 .finedTitle {
   font-weight: 900;
   text-shadow: 2px 2px #000000;
@@ -264,16 +211,4 @@ export default {
 }
 </style>
 
-<style lang="css">
-.transparent {
-  background-color: white !important;
-  opacity: 0.65;
-  border-color: transparent !important;
-}
-</style>
 
-<style>
-.v-toolbar__content {
-  padding: 0px !important;
-}
-</style>

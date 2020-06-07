@@ -30,7 +30,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: ["sweetalert2/dist/sweetalert2.min.css"],
+  css: ["sweetalert2/dist/sweetalert2.min.css", "@fortawesome/fontawesome-free/css/all.css"],
   /*
    ** Plugins to load before mounting the App
    */
@@ -65,6 +65,9 @@ export default {
           success: colors.green.accent3
         }
       }
+    },
+    icons: {
+      iconfont: 'fa'
     }
   },
   env: {
