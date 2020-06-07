@@ -20,48 +20,26 @@
         </v-parallax>
       </section>
 
-      <section>
+      <section class="features">
         <v-layout column wrap class="my-5" align-center>
           <v-flex xs12 sm4 class="my-3">
             <div class="text-xs-center">
-              <h2 class="headline">The best way to share your amazing stuff</h2>
-              <span class="subheading">No more restrictions, no more limits</span>
+              <h2 class="headline">Transforme seu servidor em algo incrível</h2>
+              <span class="subheading">Sem mais restrições, é você no poder!</span>
             </div>
           </v-flex>
           <v-flex xs12>
             <v-container grid-list-xl>
               <v-layout row wrap align-center>
-                <v-flex xs12 md4>
-                  <v-card class="elevation-0 transparent">
+                <v-flex xs12 md4 v-for="(feature, index) of features" :key="index">
+                  <v-card class="elevation-0 transparent feature">
                     <v-card-text class="text-xs-center">
-                      <v-icon x-large class="blue--text text--lighten-2">public</v-icon>
+                      <i :class="`${feature.icon} blue--text text--lighten-2`"></i>
                     </v-card-text>
                     <v-card-title primary-title class="layout justify-center">
-                      <div class="headline text-xs-center">Reach the world</div>
+                      <div class="headline text-xs-center">{{feature.title}}</div>
                     </v-card-title>
-                    <v-card-text>Show your stuff to the whole community of Endorfine not only to your mum or your friends. We love making good content viral. In this moment Endorfine is used by artists who are not famous but that want to share their works to the world. Unfortunately with other social networks this is hard, slow and sometime expensive.</v-card-text>
-                  </v-card>
-                </v-flex>
-                <v-flex xs12 md4>
-                  <v-card class="elevation-0 transparent">
-                    <v-card-text class="text-xs-center">
-                      <v-icon x-large class="blue--text text--lighten-2">flash_on</v-icon>
-                    </v-card-text>
-                    <v-card-title primary-title class="layout justify-center">
-                      <div class="headline">Fast feedback</div>
-                    </v-card-title>
-                    <v-card-text>Time is important, we don't want you to waste it. Here you can get a massive feedback from real users in minutes. And if your stuff is appreciated you won't only get positive feedback but also lovely and sincere fans</v-card-text>
-                  </v-card>
-                </v-flex>
-                <v-flex xs12 md4>
-                  <v-card class="elevation-0 transparent">
-                    <v-card-text class="text-xs-center">
-                      <v-icon x-large class="blue--text text--lighten-2">share</v-icon>
-                    </v-card-text>
-                    <v-card-title primary-title class="layout justify-center">
-                      <div class="headline text-xs-center">Create new connections</div>
-                    </v-card-title>
-                    <v-card-text>Imagine if you can directly speak with the world's population. Don't you think it would be easier to find nice people to interact with? Endorfine is both local and global and help you to connect without limitations with people from your city, your state and your universe!</v-card-text>
+                    <v-card-text>{{feature.text}}</v-card-text>
                   </v-card>
                 </v-flex>
               </v-layout>
@@ -69,7 +47,7 @@
           </v-flex>
         </v-layout>
       </section>
-
+      <!-- 
       <section>
         <v-parallax :src="imageLink.main" height="380">
           <v-layout column align-center justify-center>
@@ -81,7 +59,6 @@
           </v-layout>
         </v-parallax>
       </section>
-
 
       <section>
         <v-parallax :src="imageLink.social_cover" height="380">
@@ -135,15 +112,15 @@
             </v-flex>
           </v-layout>
         </v-container>
-      </section>
+      </section>-->
 
       <v-footer class="blue darken-2">
         <v-layout row wrap align-center>
           <v-flex xs12 class="text-xs-center">
             <div class="white--text ml-3">
-              Made with
-              <v-icon class="red--text">favorite</v-icon>using
-              <a class="white--text" href="https://vuetifyjs.com" target="_blank">Vuetify</a>
+              Feito com
+              <i class="fas fa-heart"></i>
+              pelo Senhor Biscoito © {{new Date().getFullYear()}}
             </div>
           </v-flex>
         </v-layout>
@@ -176,7 +153,27 @@ export default {
           "E-mail must be valid"
       ],
       subscribed: false,
-      baseUrl: process.env.baseUrl
+      baseUrl: process.env.baseUrl,
+      features: [
+        {
+          icon: "fas fa-comment-dots",
+          title: "Ações",
+          text:
+            "Você poderá interagir com outros membros do servidor através de ações, deixando seu servidor bombando e dando o poder das pessoas interagir como querem no discord"
+        },
+        {
+          icon: "fas fa-dice",
+          title: "RPG",
+          text:
+            "Comandos exclusivos de um sistema incrível de ficha de RPG, você vai poder criar suas fichas, mostrar para as pessoas, rodar dados e muito mais"
+        },
+        {
+          icon: "fas fa-balance-scale",
+          title: "Moderação",
+          text:
+            "Seja um deus todo poderoso ou um admin benevolente tendo poderes de moderação para botar ordem no seu servidor com comandos de banir, reportar e até quem não é admin poder denunciar alguém"
+        }
+      ]
     };
   },
   methods: {
@@ -200,6 +197,13 @@ export default {
 </script>
 
 <style scoped>
+.features i {
+  font-size: 40px;
+}
+
+.features .feature {
+  min-height: 300px;
+}
 .finedTitle {
   font-weight: 900;
   text-shadow: 2px 2px #000000;

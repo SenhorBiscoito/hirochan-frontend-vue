@@ -16,7 +16,12 @@
       <v-toolbar-items>
         <nuxt-link to="/donate">
           <v-btn class="yellow lighten-3 tollbar-option">
-            <i class="fas fa-hand-holding-usd"></i>Donate
+            <i class="fas fa-piggy-bank"></i>Donate
+          </v-btn>
+        </nuxt-link>
+        <nuxt-link to="/about">
+          <v-btn class="green lighten-3 tollbar-option">
+            <i class="far fa-newspaper"></i>Sobre
           </v-btn>
         </nuxt-link>
         <nuxt-link to="/commands">
