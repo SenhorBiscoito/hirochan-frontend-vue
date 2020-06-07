@@ -1,6 +1,6 @@
 # sam-jolteon
 
-> Frontend da aplicação Sam Jolteon
+> Frontend da aplicação Hirochan
 
 ## Build Setup
 

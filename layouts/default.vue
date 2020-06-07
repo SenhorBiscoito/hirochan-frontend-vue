@@ -59,9 +59,9 @@ export default {
       fixed: true,
       items: [
         {
-          icon: "mdi-apps",
-          title: "Welcome",
-          to: "/"
+          icon: "fas fa-cogs",
+          title: "Seus servidores",
+          to: "/dashboard"
         },
         {
           icon: "mdi-chart-bubble",
@@ -72,7 +72,7 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: "Sam Jolteon"
+      title: "Hirochan"
     };
   }
 };

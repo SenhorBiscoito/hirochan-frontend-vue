@@ -1,5 +1,5 @@
 <template>
-  <v-app light>
+  <v-app class="landing" light>
     <navbar />
     <div class="dark">
       <nuxt />
@@ -24,7 +24,7 @@ export default {
 .w-100 {
   width: 100%;
 }
-.v-toolbar__content {
+.landing .v-toolbar__content {
   padding: 0px !important;
 }
 a {

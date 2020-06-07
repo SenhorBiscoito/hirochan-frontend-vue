@@ -14,7 +14,7 @@
               <div
                 class="white--text subheading mb-3 text-xs-center"
               >Com grandes poderes vem grandes responsabilidades</div>
-              <v-btn class="blue lighten-2 mt-5" dark large href="http://localhost:8080/auth">Logar</v-btn>
+              <v-btn class="blue lighten-2 mt-5" dark large :href="`${this.baseUrl}/auth`">Logar</v-btn>
             </v-layout>
           </v-overlay>
         </v-parallax>
