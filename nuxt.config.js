@@ -68,8 +68,8 @@ export default {
     }
   },
   env: {
-    // baseUrl: process.env.BASE_URL || 'http://localhost:8080'
-    baseUrl: process.env.BASE_URL || 'http://hirochan.us-east-2.elasticbeanstalk.com'
+    baseUrl: process.env.BASE_URL || 'http://localhost:8080'
+    // baseUrl: process.env.BASE_URL || 'http://hirochan.us-east-2.elasticbeanstalk.com'
   },
   /*
    ** Build configuration
