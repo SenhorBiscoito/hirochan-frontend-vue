@@ -1,5 +1,5 @@
 <template>
-  <div>comandos</div>
+  <div>about page</div>
 </template>
 
 <script>
