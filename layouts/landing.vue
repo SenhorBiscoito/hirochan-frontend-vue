@@ -1,6 +1,6 @@
 <template>
   <v-app class="landing" light>
-    <navbar />
+    <navbar-landing />
     <div class="dark">
       <nuxt />
     </div>
@@ -8,11 +8,11 @@
 </template>
 
 <script>
-import Navbar from "~/components/Navbar.vue";
+import NavbarLanding from "~/components/NavbarLanding.vue";
 
 export default {
   components: {
-    Navbar
+    NavbarLanding
   }
 };
 </script>

@@ -255,7 +255,7 @@ export default {
 
       // EDITAR FICHA
       if (ficha) {
-        const result = await this.axiosGet(
+        const result = await this.get(
           `/api/v1/caracteristicas/315901168679124992?ficha=Vitrex`
         );
 
@@ -299,7 +299,7 @@ export default {
             console.log(formData);
 
             try {
-              const data = await this.axiosPost(`/api/v1/fichas`, formData);
+              const data = await this.post(`/api/v1/fichas`, formData);
               console.log(data);
               this.snackbar = true;
               this.scrollTop();
@@ -319,12 +319,12 @@ export default {
       document.documentElement.scrollTop = 0;
     },
     async getSexo() {
-      const res = await this.axiosGet(`/api/v1/sexo/`);
+      const res = await this.get(`/api/v1/sexo/`);
 
       if (res) this.sexos = res.data;
     },
     async getGenero() {
-      const res = await this.axiosGet(`/api/v1/genero/`);
+      const res = await this.get(`/api/v1/genero/`);
 
       if (res) this.generos = res.data;
     },

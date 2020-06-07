@@ -79,7 +79,7 @@ export default {
     async initialize() {
       try {
         this.loading = true;
-        const res = await this.axiosGet(
+        const res = await this.get(
           `/api/v1/caracteristicas/${this.session.id_user}`
         );
         this.loading = false;
@@ -120,7 +120,7 @@ export default {
       });
 
       if (modal.value) {
-        const data = await this.axiosDelete(`/api/v1/fichas`, {
+        const data = await this.delete(`/api/v1/fichas`, {
           id_user,
           ficha
         });

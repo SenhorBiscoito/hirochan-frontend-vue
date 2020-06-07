@@ -4,7 +4,7 @@ import axios from '~/plugins/axios';
 Vue.mixin({
     methods: {
         // My backedn
-        async axiosGet(url) {
+        async get(url) {
             try {
                 const data = await axios.get(url);
                 return data;
@@ -12,7 +12,7 @@ Vue.mixin({
                 return e;
             }
         },
-        async axiosPost(url, body) {
+        async post(url, body) {
             try {
                 const data = await axios({
                     method: "post",
@@ -30,7 +30,7 @@ Vue.mixin({
                 return e;
             }
         },
-        async axiosDelete(url, body) {
+        async delete(url, body) {
             try {
                 const data = await axios({
                     method: "delete",
@@ -48,21 +48,28 @@ Vue.mixin({
             }
         },
         // Discord
-        async discordGet(url, headers) {
+        async discordGet(url, accessToken) {
             try {
-                const data = await axios.get(url, headers);
+                const data = await axios.get(url, {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`
+                    },
+                    baseURL: 'https://discord.com',
+                });
                 return data;
             } catch (e) {
-                return e;
+                return e.response;
             }
         },
-        async discordPost(url, body, headers) {
+        async discordPost(url, body, accessToken) {
             try {
                 const data = await axios({
                     method: "post",
                     url,
                     data: body,
-                    header: {
+                    baseURL: 'https://discord.com',
+                    headers: {
+                        "Authorization": `Bearer ${accessToken}`,
                         Accept: "application/json",
                         "Content-Type": "multipart/form-data"
                     }
@@ -71,24 +78,27 @@ Vue.mixin({
                 return data;
 
             } catch (e) {
-                return e;
+                return e.response;
             }
         },
-        async discordDelete(url, body, headers) {
+        async discordDelete(url, body, accessToken) {
             try {
                 const data = await axios({
                     method: "delete",
+                    "Authorization": `Bearer ${accessToken}`,
                     url,
+                    baseURL: 'https://discord.com',
                     data: body,
-                    header: {
+                    headers: {
                         Accept: "application/json",
+                        "Authorization": `Bearer ${accessToken}`,
                     }
                 });
 
                 return data;
 
             } catch (e) {
-                return e;
+                return e.response;
             }
         },
 

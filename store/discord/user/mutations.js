@@ -1,5 +1,5 @@
 export default {
     update(state, newValue) {
-        state.ficha = newValue;
+        state.user = newValue;
     }
 }

@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto" elevation="10">
+  <v-card class="mx-auto" elevation="10" v-if="guilds">
     <v-card-title>
       <h2 class="display-1">Lista de servidores</h2>
     </v-card-title>
@@ -13,7 +13,7 @@
               <v-img
                 class="white--text align-end"
                 height="200px"
-                src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                :src="`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=512`"
               >
                 <v-card-title>{{guild.name}}</v-card-title>
               </v-img>
@@ -38,22 +38,9 @@ export default {
   middleware: "authenticated",
   computed: {
     ...mapGetters({
-      session: "session/get"
+      session: "session/get",
+      guilds: "discord/guilds/get"
     })
-  },
-  data() {
-    return {
-      guilds: []
-    };
-  },
-  mounted() {
-    console.log(this.session);
-    this.guilds = this.session.guilds;
-  },
-  methods: {
-    initialize() {
-      this.axiosGet()
-    }
   }
 };
 </script>

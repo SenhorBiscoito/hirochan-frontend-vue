@@ -1,17 +1,8 @@
 <template>
   <div class="elevation-6">
     <v-toolbar dense>
-      <!-- <v-toolbar-side-icon> -->
-      <div
-        class="d-flex justify-center align-center"
-        style="height: inherit; cursor: pointer"
-        @click="goHome"
-      >
-        <img :src="imageLink.logo" alt="Vuetify.js" height="100%" />
-        <!-- </v-toolbar-side-icon> -->
-        <v-toolbar-title class="mx-0" v-text="title"></v-toolbar-title>
-        <p>Beta</p>
-      </div>
+      <logo :changeRoute="goHome" :title="title" />
+
       <v-spacer></v-spacer>
       <v-toolbar-items>
         <nuxt-link to="/donate">
@@ -38,7 +29,11 @@
 </template>
 
 <script>
+import Logo from "./Logo";
 export default {
+  components: {
+    Logo
+  },
   data() {
     return {
       title: "Hirochan ●ω●",

@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <!-- SIDEBAR ITEMS -->
     <v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" :clipped="clipped" fixed app>
       <v-list>
         <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
@@ -12,38 +13,38 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
+    <!-- HEADER -->
     <v-app-bar class="blue darken-1" :clipped-left="clipped" fixed app>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn icon @click.stop="miniVariant = !miniVariant">
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="clipped = !clipped">
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="fixed = !fixed">
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title" />
+      <logo :changeRoute="goDashboard" :title="title" />
       <v-spacer />
+
       <v-btn icon @click.stop="rightDrawer = !rightDrawer">
         <v-icon>mdi-menu</v-icon>
       </v-btn>
     </v-app-bar>
+
     <v-content>
       <v-container>
         <nuxt />
       </v-container>
     </v-content>
     <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>mdi-repeat</v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
+      <v-list v-if="user">
+        <v-list-item class="justify-center d-flex">
+          <!-- AVATAR -->
+          <div>
+            <v-avatar size="128">
+              <img
+                :src="`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`"
+                alt="John"
+              />
+            </v-avatar>
+          </div>
         </v-list-item>
+        <v-list-item class="justify-center d-flex">{{user.username}}</v-list-item>
       </v-list>
     </v-navigation-drawer>
+
     <!-- <v-footer :fixed="fixed" app>
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>-->
@@ -51,7 +52,12 @@
 </template>
 
 <script>
+import Logo from "../components/Logo";
+import { mapGetters } from "vuex";
 export default {
+  components: {
+    Logo
+  },
   data() {
     return {
       clipped: true,
@@ -72,8 +78,50 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: "Hirochan"
+      title: "Hirochan ●ω●"
     };
+  },
+  computed: {
+    ...mapGetters({
+      session: "session/get",
+      user: "discord/user/get"
+    })
+  },
+  mounted() {
+    this.initialize();
+  },
+  methods: {
+    initialize() {
+      this.getUser();
+      this.getGuild();
+    },
+    goDashboard(){
+      this.$router.push("/dashboard");
+    },
+    async getUser() {
+      try {
+        const response = await this.discordGet(
+          `/api/users/@me`,
+          this.session.accessToken
+        );
+
+        this.$store.commit("discord/user/update", response.data);
+      } catch (e) {
+        return console.log(e);
+      }
+    },
+    async getGuild() {
+      try {
+        const response = await this.discordGet(
+          `/api/users/@me/guilds`,
+          this.session.accessToken
+        );
+
+        this.$store.commit("discord/guilds/update", response.data);
+      } catch (e) {
+        return console.log(e);
+      }
+    }
   }
 };
 </script>
