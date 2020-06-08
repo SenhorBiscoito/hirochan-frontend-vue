@@ -1,7 +1,7 @@
 <template>
   <v-card class="mx-auto" elevation="10">
     <v-card-title>
-      <h2 class="display-1">Fichas de {{session.username}}</h2>
+      <h2 class="display-1">Fichas de {{user.username}}</h2>
       <v-spacer></v-spacer>
       <v-btn class="ma-2" tile color="indigo" outlined dark @click="newFicha">Nova Ficha</v-btn>
     </v-card-title>
@@ -39,7 +39,8 @@ export default {
   middleware: "authenticated",
   computed: {
     ...mapGetters({
-      session: "session/get"
+      session: "session/get",
+      user: "discord/user/get"
     })
   },
   async mounted() {

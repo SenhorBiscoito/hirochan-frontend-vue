@@ -1,8 +1,7 @@
 <template>
   <div>
     <div class="d-flex justify-end">
-    <v-btn class="ma-2 mr-0" color="primary" @click="back">Voltar</v-btn>
-
+      <v-btn class="ma-2 mr-0" color="primary" @click="back">Voltar</v-btn>
     </div>
 
     <v-card class="mx-auto" elevation="10">
@@ -19,6 +18,7 @@
               <v-text-field
                 v-model="form.ficha"
                 :rules="rules.ficha"
+                :disabled="isEdit"
                 outlined
                 label="Ficha"
                 placeholder="Digite o nome da sua ficha do discord 😉"
@@ -26,7 +26,7 @@
               ></v-text-field>
             </v-col>
             <v-col cols="12" sm="4">
-              <p class="display-1 text--primary text-center">{{session.username}}</p>
+              <p class="display-1 text--primary text-center" v-if="user">{{user.username}}</p>
             </v-col>
             <!-- Idade -->
             <v-col cols="12" sm="4">
@@ -176,15 +176,22 @@ export default {
       return (
         this.form.nome &&
         this.form.idade &&
-        this.form.genero &&
-        this.form.sexo &&
+        this.form.id_genero &&
+        this.form.id_sexo &&
         this.form.personalidade &&
         this.form.gosta_de &&
         this.form.nao_gosta_de &&
         this.form.historia
       );
     },
+    isEdit(){
+      if(this.ficha){
+        return true;
+      } 
+      return false;
+    },
     ...mapGetters({
+      user: "discord/user/get",
       ficha: "ficha/get",
       session: "session/get"
     })
@@ -244,33 +251,7 @@ export default {
   },
 
   mounted() {
-    (async () => {
-      await this.getSexo();
-      await this.getGenero();
-
-      const urlParams = new URLSearchParams(window.location.search);
-      const id_user = urlParams.get("id_user");
-      const ficha = urlParams.get("ficha");
-      this.form.id_user = id_user;
-
-      // EDITAR FICHA
-      if (ficha) {
-        const result = await this.get(
-          `/api/v1/caracteristicas/315901168679124992?ficha=Vitrex`
-        );
-
-        if (result) {
-          const data = result.data[0];
-
-          this.form = {
-            ...data,
-            id_genero: data.genero[0].id_genero,
-            id_sexo: data.sexo[0].id_sexo
-          };
-          console.log(this.form);
-        }
-      }
-    })();
+    this.initialize();
   },
   methods: {
     resetForm() {
@@ -279,25 +260,25 @@ export default {
     },
     async submit() {
       // Quando o formulário for válido, faça a requisição
+      console.log(this.form);
       if (this.$refs.form.validate()) {
-        if (this.form.image != null) {
-          if (this.session.id_user != null) {
-            let formData = new FormData();
-            formData.append("image", this.form.image, this.form.image.name);
-            formData.append("ficha", this.form.ficha);
-            formData.append("id_user", this.session.id_user);
-            formData.append("id_genero", this.form.id_genero);
-            formData.append("id_sexo", this.form.id_sexo);
-            formData.append("nome", this.form.nome);
-            formData.append("gosta_de", this.form.gosta_de);
-            formData.append("historia", this.form.historia);
-            formData.append("idade", this.form.idade);
-            formData.append("nao_gosta_de", this.form.nao_gosta_de);
-            formData.append("personalidade", this.form.personalidade);
-            formData.append("poderes", this.form.poderes);
+        let formData = new FormData();
+        formData.append("ficha", this.form.ficha);
+        formData.append("id_user", this.session.id_user);
+        formData.append("id_genero", this.form.id_genero);
+        formData.append("id_sexo", this.form.id_sexo);
+        formData.append("nome", this.form.nome);
+        formData.append("gosta_de", this.form.gosta_de);
+        formData.append("historia", this.form.historia);
+        formData.append("idade", this.form.idade);
+        formData.append("nao_gosta_de", this.form.nao_gosta_de);
+        formData.append("personalidade", this.form.personalidade);
+        formData.append("poderes", this.form.poderes);
+        if (!this.ficha)
+          formData.append("image", this.form.image, this.form.image.name);
 
-            console.log(formData);
-
+        if (!this.ficha) {
+          if (this.form.image != null) {
             try {
               const data = await this.post(`/api/v1/fichas`, formData);
               console.log(data);
@@ -307,10 +288,17 @@ export default {
               console.log(e);
             }
           } else {
-            alert("Você precisa estar logado ;w;");
+            alert("Você precisa escolher uma imagem para enviar");
           }
         } else {
-          alert("Você precisa escolher uma imagem para enviar");
+          try {
+            const data = await this.post(`/api/v1/fichas`, formData);
+            console.log(data);
+            this.snackbar = true;
+            this.scrollTop();
+          } catch (e) {
+            console.log(e);
+          }
         }
       }
     },
@@ -328,7 +316,12 @@ export default {
 
       if (res) this.generos = res.data;
     },
-    back(){
+    initialize() {
+      this.getSexo();
+      this.getGenero();
+      console.log(this.ficha);
+    },
+    back() {
       this.$router.push("/dashboard/user");
     }
   }

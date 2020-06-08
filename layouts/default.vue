@@ -15,6 +15,8 @@
     </v-navigation-drawer>
     <!-- HEADER -->
     <v-app-bar class="blue darken-1" :clipped-left="clipped" fixed app>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+
       <logo :changeRoute="goDashboard" :title="title" />
       <v-spacer />
 

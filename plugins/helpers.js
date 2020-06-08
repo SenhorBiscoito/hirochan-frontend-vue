@@ -30,6 +30,24 @@ Vue.mixin({
                 return e;
             }
         },
+        async put(url, body) {
+            try {
+                const data = await axios({
+                    method: "put",
+                    url,
+                    data: body,
+                    header: {
+                        Accept: "application/json",
+                        "Content-Type": "multipart/form-data"
+                    }
+                });
+
+                return data;
+
+            } catch (e) {
+                return e;
+            }
+        },
         async delete(url, body) {
             try {
                 const data = await axios({
