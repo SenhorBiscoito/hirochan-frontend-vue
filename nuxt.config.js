@@ -71,11 +71,11 @@ export default {
     }
   },
   env: {
-    // baseUrl: 'http://localhost:8080',
-    // baseUrlFront: 'http://localhost:3000',
+    baseUrl: 'http://localhost:8080',
+    baseUrlFront: 'http://localhost:3000',
 
-    baseUrl: 'http://hirochan.us-east-2.elasticbeanstalk.com',
-    baseUrlFront: 'http://hirochan-website.s3-website-sa-east-1.amazonaws.com',
+    // baseUrl: 'http://hirochan.us-east-2.elasticbeanstalk.com',
+    // baseUrlFront: 'http://hirochan-website.s3-website-sa-east-1.amazonaws.com',
   },
   /*
    ** Build configuration

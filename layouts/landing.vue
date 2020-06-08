@@ -1,8 +1,8 @@
 <template>
   <v-app class="landing" light>
     <navbar-landing />
-    <div class="dark">
-      <nuxt />
+    <div class="dark h-100">
+      <nuxt style="height: ineirit"/>
     </div>
     <Footer />
   </v-app>
@@ -30,7 +30,7 @@ export default {
   padding: 0px !important;
 }
 
-.landing .container{
+.landing .container {
   padding-bottom: 3rem;
 }
 a {

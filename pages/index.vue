@@ -5,7 +5,6 @@
         <v-parallax
           :src="imageLink.sub_main"
           height="600"
-          color="rgb(255, 0, 0, 0.2)"
           style="background-color: rgba(0, 0, 0, 0.9)"
         >
           <v-overlay :absolute="true" :value="true">
@@ -15,7 +14,7 @@
                 class="white--text subheading mb-3 text-xs-center"
               >Com grandes poderes vem grandes responsabilidades</div>
               <nuxt-link to="/dashboard">
-                <v-btn class="blue lighten-2 mt-5" dark large>Logar</v-btn>
+                <v-btn class="blue lighten-2 mt-5" rounded  dark x-large>Logar <v-icon class="ml-2">fas fa-sign-in-alt</v-icon></v-btn>
               </nuxt-link>
             </v-layout>
           </v-overlay>
