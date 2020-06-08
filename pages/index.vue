@@ -115,18 +115,6 @@
           </v-layout>
         </v-container>
       </section>-->
-
-      <v-footer class="blue darken-2">
-        <v-layout row wrap align-center>
-          <v-flex xs12 class="text-xs-center">
-            <div class="white--text ml-3">
-              Feito com
-              <i class="fas fa-heart"></i>
-              pelo Senhor Biscoito © {{new Date().getFullYear()}}
-            </div>
-          </v-flex>
-        </v-layout>
-      </v-footer>
     </v-content>
   </div>
 </template>

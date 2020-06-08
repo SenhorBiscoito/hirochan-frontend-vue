@@ -5,7 +5,6 @@
     @click="changeRoute"
   >
     <img :src="imageLink.logo" alt="Vuetify.js" height="100%" />
-    <!-- </v-toolbar-side-icon> -->
     <v-toolbar-title class="mx-0" v-text="title"></v-toolbar-title>
     <p>Beta</p>
   </div>

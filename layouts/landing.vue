@@ -4,15 +4,17 @@
     <div class="dark">
       <nuxt />
     </div>
+    <Footer />
   </v-app>
 </template>
 
 <script>
 import NavbarLanding from "~/components/NavbarLanding.vue";
-
+import Footer from "~/components/Footer.vue";
 export default {
   components: {
-    NavbarLanding
+    NavbarLanding,
+    Footer
   }
 };
 </script>
@@ -26,6 +28,10 @@ export default {
 }
 .landing .v-toolbar__content {
   padding: 0px !important;
+}
+
+.landing .container{
+  padding-bottom: 3rem;
 }
 a {
   text-decoration: none;
