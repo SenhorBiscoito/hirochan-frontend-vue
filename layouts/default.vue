@@ -95,8 +95,8 @@ export default {
       this.getUser();
       this.getGuild();
     },
-    goDashboard(){
-      this.$router.push("/dashboard");
+    goDashboard() {
+      this.$router.push("/");
     },
     async getUser() {
       try {
@@ -117,7 +117,11 @@ export default {
           this.session.accessToken
         );
 
-        this.$store.commit("discord/guilds/update", response.data);
+        const data = response.data.filter(item => {
+          return item.owner || item.permissions == 2147483647;
+        });
+
+        this.$store.commit("discord/guilds/update", data);
       } catch (e) {
         return console.log(e);
       }

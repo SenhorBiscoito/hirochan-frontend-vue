@@ -18,8 +18,8 @@
                 <v-card-title>{{guild.name}}</v-card-title>
               </v-img>
 
-              <v-card-subtitle class="pb-0" v-if="guild.owner">Administrador</v-card-subtitle>
-              <!-- <v-card-subtitle class="pb-0" >Administrador</v-card-subtitle> -->
+              <v-card-subtitle class="pb-0" v-if="guild.owner">Dono</v-card-subtitle>
+              <v-card-subtitle v-else>Administrador</v-card-subtitle>
 
               <v-card-actions>
                 <v-btn color="orange" text>Configurar Servidor</v-btn>

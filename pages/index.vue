@@ -14,7 +14,9 @@
               <div
                 class="white--text subheading mb-3 text-xs-center"
               >Com grandes poderes vem grandes responsabilidades</div>
-              <v-btn class="blue lighten-2 mt-5" dark large :href="`${this.baseUrl}/auth`">Logar</v-btn>
+              <nuxt-link to="/dashboard">
+                <v-btn class="blue lighten-2 mt-5" dark large>Logar</v-btn>
+              </nuxt-link>
             </v-layout>
           </v-overlay>
         </v-parallax>
@@ -153,7 +155,7 @@ export default {
           "E-mail must be valid"
       ],
       subscribed: false,
-      baseUrl: process.env.baseUrl,
+      baseUrlFront: process.env.baseUrlFront,
       features: [
         {
           icon: "fas fa-comment-dots",

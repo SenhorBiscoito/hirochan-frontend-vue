@@ -1,5 +1,5 @@
 <template>
-  <div class="elevation-6">
+  <div class="elevation-6 navbar">
     <v-toolbar dense>
       <logo :changeRoute="goHome" :title="title" />
 
@@ -20,9 +20,11 @@
             <i class="fas fa-terminal"></i>Comandos
           </v-btn>
         </nuxt-link>
-        <v-btn class="blue lighten-3" :href="`${baseUrl}/auth`">
-          <i class="fas fa-sign-in-alt"></i>Painel de Controle
-        </v-btn>
+        <nuxt-link to="/dashboard">
+          <v-btn class="blue lighten-3">
+            <i class="fas fa-sign-in-alt"></i>Painel de Controle
+          </v-btn>
+        </nuxt-link>
       </v-toolbar-items>
     </v-toolbar>
   </div>
@@ -37,7 +39,7 @@ export default {
   data() {
     return {
       title: "Hirochan ●ω●",
-      baseUrl: process.env.baseUrl,
+      baseUrlFront: process.env.baseUrlFront,
       imageLink: {
         logo: "/logo.png"
       }
@@ -50,3 +52,11 @@ export default {
   }
 };
 </script>
+
+
+<style lang="css">
+div.navbar button {
+  height: 100% !important;
+  border-radius: 0px !important;
+}
+</style>
