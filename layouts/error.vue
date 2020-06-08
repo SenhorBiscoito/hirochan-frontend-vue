@@ -68,9 +68,6 @@ export default {
 </script>
 
 <style scoped>
-.h-100 {
-  height: 100%;
-}
 h1 {
   font-size: 20px;
 }

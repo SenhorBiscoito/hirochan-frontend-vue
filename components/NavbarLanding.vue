@@ -4,29 +4,66 @@
       <logo :changeRoute="goHome" :title="title" />
 
       <v-spacer></v-spacer>
-      <v-toolbar-items>
+      <v-toolbar-items class="d-none d-md-inline-flex">
         <nuxt-link to="/donate">
           <v-btn class="yellow lighten-3 tollbar-option">
-            <i class="fas fa-piggy-bank"></i>Donate
+            <v-icon class="mr-2">fas fa-piggy-bank</v-icon>Donate
           </v-btn>
         </nuxt-link>
         <nuxt-link to="/about">
           <v-btn class="green lighten-3 tollbar-option">
-            <i class="far fa-newspaper"></i>Sobre
+            <v-icon class="mr-2">fas fa-clipboard</v-icon>Sobre mim
           </v-btn>
         </nuxt-link>
         <nuxt-link to="/commands">
           <v-btn class="red lighten-3 tollbar-option">
-            <i class="fas fa-terminal"></i>Comandos
+            <v-icon class="mr-2">fas fa-terminal</v-icon>Comandos
           </v-btn>
         </nuxt-link>
         <nuxt-link to="/dashboard">
           <v-btn class="blue lighten-3">
-            <i class="fas fa-sign-in-alt"></i>Painel de Controle
+            <v-icon class="mr-2">fas fa-cogs</v-icon>Painel de Controle
           </v-btn>
         </nuxt-link>
       </v-toolbar-items>
+      <v-toolbar-items>
+        <v-btn class="d-md-none" icon @click.stop="rightDrawer = !rightDrawer">
+          <v-icon>mdi-menu</v-icon>
+        </v-btn>
+      </v-toolbar-items>
     </v-toolbar>
+
+    <!--  -->
+    <v-navigation-drawer v-model="rightDrawer" :right="true" temporary fixed>
+      <div class="list-item">
+        <nuxt-link to="/donate">
+          <v-btn class="yellow lighten-3 tollbar-option button-drawer">
+            <v-icon class="mr-2">fas fa-piggy-bank</v-icon>Donate
+          </v-btn>
+        </nuxt-link>
+      </div>
+      <div class="list-item">
+        <nuxt-link to="/about">
+          <v-btn class="green lighten-3 tollbar-option button-drawer">
+            <v-icon class="mr-2">fas fa-clipboard</v-icon>Sobre mim
+          </v-btn>
+        </nuxt-link>
+      </div>
+      <div class="list-item">
+        <nuxt-link to="/commands">
+          <v-btn class="red lighten-3 tollbar-option button-drawer">
+            <v-icon class="mr-2">fas fa-terminal</v-icon>Comandos
+          </v-btn>
+        </nuxt-link>
+      </div>
+      <div class="list-item">
+        <nuxt-link to="/dashboard">
+          <v-btn class="blue lighten-3 button-drawer">
+            <v-icon class="mr-2">fas fa-cogs</v-icon>Painel de Controle
+          </v-btn>
+        </nuxt-link>
+      </div>
+    </v-navigation-drawer>
   </div>
 </template>
 
@@ -39,6 +76,8 @@ export default {
   data() {
     return {
       title: "Hirochan ●ω●",
+      rightDrawer: false,
+
       baseUrlFront: process.env.baseUrlFront,
       imageLink: {
         logo: "/logo.png"
@@ -55,6 +94,12 @@ export default {
 
 
 <style lang="css">
+.button-drawer {
+  width: 100%;
+}
+.list-item{
+  height: 10%;
+}
 div.navbar button {
   height: 100% !important;
   border-radius: 0px !important;

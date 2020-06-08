@@ -1,7 +1,7 @@
 <template>
   <v-container grid-list-xl class="about">
     <v-layout row justify-center class="my-6">
-      <v-flex xs12 sm6>
+      <v-flex xs12 md6>
         <v-card class="elevation-0 transparent">
           <v-card-title primary-title class="layout">
             <h1 class="mb-2 display-2">Sobre mim 📝</h1>
@@ -18,12 +18,12 @@
           >Gosto de lámen e assistir animes no meu tempo livre, para saber mais sobre mim você vai ter que descobrir</p>
           <v-flex justify-center>
             <div>
-              <v-btn rounded color="primary" x-large dark>Me convide </v-btn>
+              <v-btn rounded color="primary" x-large dark>Me convide</v-btn>
             </div>
           </v-flex>
         </v-card>
       </v-flex>
-      <v-flex xs12 sm6>
+      <v-flex xs12 md6>
         <v-img src="/chubby.png"></v-img>
       </v-flex>
     </v-layout>

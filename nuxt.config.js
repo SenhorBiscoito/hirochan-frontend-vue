@@ -30,7 +30,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: ["sweetalert2/dist/sweetalert2.min.css", "@fortawesome/fontawesome-free/css/all.css"],
+  css: ["sweetalert2/dist/sweetalert2.min.css", "@fortawesome/fontawesome-free/css/all.css", "~/css/main.css"],
   /*
    ** Plugins to load before mounting the App
    */

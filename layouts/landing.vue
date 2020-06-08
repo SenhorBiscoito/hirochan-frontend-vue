@@ -20,9 +20,7 @@ export default {
 </script>
 
 <style lang="css">
-.h-100 {
-  height: 100%;
-}
+
 .w-100 {
   width: 100%;
 }
