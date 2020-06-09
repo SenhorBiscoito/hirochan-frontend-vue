@@ -107,6 +107,7 @@ export default {
           this.session.accessToken
         );
 
+        console.log(response.data);
         this.$store.commit("discord/user/update", response.data);
       } catch (e) {
         return console.log(e);
@@ -118,6 +119,7 @@ export default {
           `/api/users/@me/guilds`,
           this.session.accessToken
         );
+        console.log(response.data);
 
         const data = response.data.filter(item => {
           return item.owner || item.permissions == 2147483647;
