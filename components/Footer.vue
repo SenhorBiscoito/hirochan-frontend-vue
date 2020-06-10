@@ -3,9 +3,14 @@
     <v-layout row wrap align-center>
       <v-flex xs12 class="text-xs-center">
         <div class="white--text ml-3">
-          Feito com
+          {{$t("footer.made")}}
           <i class="fas fa-heart"></i>
-          pelo <a class="blue--text text--lighten-2" href="https://github.com/SenhorBiscoito">Senhor Biscoito</a> © {{new Date().getFullYear()}}
+          {{$t("footer.by")}}
+          <a
+            class="blue--text text--lighten-2"
+            href="https://github.com/SenhorBiscoito"
+          >Senhor Biscoito</a>
+          © {{new Date().getFullYear()}}
         </div>
       </v-flex>
     </v-layout>
@@ -17,15 +22,15 @@ export default {};
 </script>
 
 <style lang="css" scoped>
-.footer{
-  text-decoration: #64B5F6;
+.footer {
+  text-decoration: #64b5f6;
 }
 
 .bottom {
-   position: absolute;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   z-index: 1;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
 }
 </style>

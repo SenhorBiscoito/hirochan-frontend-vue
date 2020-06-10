@@ -1,4 +1,3 @@
-import colors from "vuetify/es5/util/colors";
 
 export default {
   mode: "spa",
@@ -7,7 +6,7 @@ export default {
    */
   // router: {
   //   // Run the middleware/user-agent.js on every page
-  //   middleware: 'authenticated'
+  // middleware: 'i18n',
   // },
   head: {
     titleTemplate: "%s - " + process.env.npm_package_name,
@@ -36,6 +35,7 @@ export default {
    */
   plugins: [
     { src: '~/plugins/helpers' },
+    { src: '~/plugins/i18n.js' }
   ],
   /*
    ** Nuxt.js dev-modules
@@ -51,31 +51,14 @@ export default {
    ** https://github.com/nuxt-community/vuetify-module
    */
   vuetify: {
-    customVariables: ["~/assets/variables.scss"],
-    theme: {
-      dark: false,
-      themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3
-        }
-      }
-    },
-    icons: {
-      iconfont: 'fa'
-    }
+    optionsPath: './vuetify.options.js'
   },
   env: {
-    // baseUrl: 'http://localhost:8080',
-    // baseUrlFront: 'http://localhost:3000',
+    baseUrl: 'http://localhost:8080',
+    baseUrlFront: 'http://localhost:3000',
 
-    baseUrl: 'https://hirochan.herokuapp.com',
-    baseUrlFront: 'http://hirochan-website.s3-website-sa-east-1.amazonaws.com',
+    // baseUrl: 'https://hirochan.herokuapp.com',
+    // baseUrlFront: 'http://hirochan-website.s3-website-sa-east-1.amazonaws.com',
   },
   /*
    ** Build configuration

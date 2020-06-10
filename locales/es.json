@@ -1,0 +1,33 @@
+{
+  "landing": {
+    "navbar": {
+      "about": "Acerca de mí",
+      "commands": "Comandos",
+      "control": "Panel de control"
+    },
+    "home": {
+      "maintitle": "La discordia que necesitas",
+      "mainsub": "Con grandes poderes vienen grandes responsabilidades",
+      "login": "Iniciar sesión",
+      "invite": "Invítame",
+      "title": "Convierte tu servidor en algo increíble",
+      "sub": "¡No más restricciones, tienes el poder!",
+      "rpg": {
+        "actions": "Acciones",
+        "actions_msg": "Podrás interactuar con otros miembros del servidor a través de acciones, dejando que tu servidor bombee y dando el poder de las personas para interactuar como quieran en la discordia",
+        "rpg": "RPG",
+        "rpg_msg": "Comandos exclusivos de un increíble sistema de chips RPG, podrás crear tus chips, mostrarlos a la gente, rotar datos y mucho más",
+        "moderation": "Moderación",
+        "moderation_msg": "Sé un dios todopoderoso o un administrador benevolente con poderes de moderación para poner orden en tu servidor con comandos para prohibir, informar e incluso quien no sea administrador puede denunciar a alguien"
+      }
+    },
+    "aboutme": {
+      "p1": "Hola, mi nombre es Hirochan y solo soy un bot para la discordia hecha por",
+      "p2": "Me gusta el ramen y veo anime en mi tiempo libre, para saber más sobre mí tendrás que averiguarlo"
+    }
+  },
+  "footer": {
+    "made": "Hecho con",
+    "by": "por"
+  }
+}

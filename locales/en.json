@@ -1,0 +1,33 @@
+{
+  "landing": {
+    "navbar": {
+      "about": "About me",
+      "commands": "Commands",
+      "control": "Control Panel"
+    },
+    "home": {
+      "maintitle": "The discord bot you need",
+      "mainsub": "With big powers come big responsabilities",
+      "login": "Log in",
+      "invite": "Invite me",
+      "title": "Turn your server into something incredible",
+      "sub": "No more restrictions, you have the power!",
+      "rpg": {
+        "actions": "Actions",
+        "actions_msg": "You will be able to interact with other members of the server through actions, leaving your server pumping and giving the power of people to interact as they want in the discord",
+        "rpg": "RPG",
+        "rpg_msg": "Exclusive commands of an incredible RPG chip system, you will be able to create your chips, show them to people, rotate data and much more",
+        "moderation": "Moderation",
+        "moderation_msg": "Be an almighty god or a benevolent admin with moderation powers to put order on your server with commands to ban, report and even who is not admin can report someone"
+      }
+    },
+    "aboutme": {
+      "p1": "Hello my name is Hirochan and I'm just a bot for the discord made by",
+      "p2": "I like ramen and watch anime in my free time, to know more about me you will have to find out"
+    }
+  },
+  "footer": {
+    "made": "Made with",
+    "by": "by"
+  }
+}

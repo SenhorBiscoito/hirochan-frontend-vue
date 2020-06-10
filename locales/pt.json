@@ -1,0 +1,44 @@
+{
+  "landing": {
+    "navbar": {
+      "about": "Sobre Mim",
+      "commands": "Comandos",
+      "control": "Painel de Controle"
+    },
+    "home": {
+      "maintitle": "O bot do discord que você precisa",
+      "mainsub": "Com grandes poderes vem grandes responsabilidades",
+      "login": "Entrar",
+      "invite": "Me convide",
+      "title": "Transforme seu servidor em algo incrível",
+      "sub": "Sem mais restrições, é você no poder!",
+      "rpg": {
+        "actions": "Ações",
+        "actions_msg": "Você poderá interagir com outros membros do servidor através de ações, deixando seu servidor bombando e dando o poder das pessoas interagir como querem no discord",
+        "rpg": "RPG",
+        "rpg_msg": "Comandos exclusivos de um sistema incrível de ficha de RPG, você vai poder criar suas fichas, mostrar para as pessoas, rodar dados e muito mais",
+        "moderation": "Moderação",
+        "moderation_msg": "Seja um deus todo poderoso ou um admin benevolente tendo poderes de moderação para botar ordem no seu servidor com comandos de banir, reportar e até quem não é admin poder denunciar alguém"
+      }
+    },
+    "aboutme": {
+      "p1": "Olá meu nome é Hirochan e eu sou apenas um bot para o discord feito pelo",
+      "p2": "Gosto de lámen e assistir animes no meu tempo livre, para saber mais sobre mim você vai ter que descobrir      "
+    }
+  },
+  "footer": {
+    "made": "Feito com",
+    "by": "pelo"
+  },
+  "dashboard": {
+    "servers": {
+      "title": "",
+      "adm": "",
+      "owner": "",
+      "config": ""
+    },
+    "users": {
+      "title": ""
+    }
+  }
+}

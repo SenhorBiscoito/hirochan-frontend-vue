@@ -9,12 +9,15 @@
         >
           <v-overlay :absolute="true" :value="true">
             <v-layout column align-center justify-center class="white--text">
-              <h1 class="white--text mb-2 display-2 text-center">O bot do discord que você precisa</h1>
+              <h1 class="white--text mb-2 display-2 text-center">{{ $t('landing.home.maintitle') }}</h1>
               <div
                 class="white--text subheading mb-3 text-xs-center"
-              >Com grandes poderes vem grandes responsabilidades</div>
+              >{{ $t('landing.home.mainsub') }}</div>
               <nuxt-link to="/dashboard">
-                <v-btn class="blue lighten-2 mt-5" rounded  dark x-large>Logar <v-icon class="ml-2">fas fa-sign-in-alt</v-icon></v-btn>
+                <v-btn class="blue lighten-2 mt-5" rounded dark x-large>
+                  {{ $t('landing.home.login') }}
+                  <v-icon class="ml-2">fas fa-sign-in-alt</v-icon>
+                </v-btn>
               </nuxt-link>
             </v-layout>
           </v-overlay>
@@ -25,8 +28,8 @@
         <v-layout column wrap class="my-5" align-center>
           <v-flex xs12 sm4 class="my-3">
             <div class="text-xs-center">
-              <h2 class="headline">Transforme seu servidor em algo incrível</h2>
-              <span class="subheading">Sem mais restrições, é você no poder!</span>
+              <h2 class="headline">{{ $t('landing.home.title') }}</h2>
+              <span class="subheading">{{ $t('landing.home.sub') }}</span>
             </div>
           </v-flex>
           <v-flex xs12>
@@ -38,9 +41,11 @@
                       <i :class="`${feature.icon} blue--text text--lighten-2`"></i>
                     </v-card-text>
                     <v-card-title primary-title class="layout justify-center">
-                      <div class="headline text-xs-center">{{feature.title}}</div>
+                      <div
+                        class="headline text-xs-center"
+                      >{{ $t(`landing.home.rpg.${feature.title}`) }}</div>
                     </v-card-title>
-                    <v-card-text>{{feature.text}}</v-card-text>
+                    <v-card-text>{{$t(`landing.home.rpg.${feature.text}`)}}</v-card-text>
                   </v-card>
                 </v-flex>
               </v-layout>
@@ -146,21 +151,18 @@ export default {
       features: [
         {
           icon: "fas fa-comment-dots",
-          title: "Ações",
-          text:
-            "Você poderá interagir com outros membros do servidor através de ações, deixando seu servidor bombando e dando o poder das pessoas interagir como querem no discord"
+          title: "actions",
+          text: "actions_msg"
         },
         {
           icon: "fas fa-dice",
-          title: "RPG",
-          text:
-            "Comandos exclusivos de um sistema incrível de ficha de RPG, você vai poder criar suas fichas, mostrar para as pessoas, rodar dados e muito mais"
+          title: "rpg",
+          text: "rpg_msg"
         },
         {
           icon: "fas fa-balance-scale",
-          title: "Moderação",
-          text:
-            "Seja um deus todo poderoso ou um admin benevolente tendo poderes de moderação para botar ordem no seu servidor com comandos de banir, reportar e até quem não é admin poder denunciar alguém"
+          title: "moderation",
+          text: "moderation_msg"
         }
       ]
     };

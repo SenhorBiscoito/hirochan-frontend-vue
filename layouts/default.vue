@@ -14,11 +14,14 @@
       </v-list>
     </v-navigation-drawer>
     <!-- HEADER -->
-    <v-app-bar class="blue darken-1" :clipped-left="clipped" fixed app>
+
+    <v-app-bar class="blue darken-1" :clipped-left="clipped" app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 
       <logo :changeRoute="goDashboard" :title="title" />
       <v-spacer />
+
+      <nav-flags />
 
       <v-btn icon @click.stop="rightDrawer = !rightDrawer">
         <v-icon>mdi-menu</v-icon>
@@ -54,11 +57,14 @@
 </template>
 
 <script>
-import Logo from "../components/Logo";
+import Logo from "~/components/Logo";
+import NavFlags from "~/components/NavFlags";
+
 import { mapGetters } from "vuex";
 export default {
   components: {
-    Logo
+    Logo,
+    NavFlags
   },
   data() {
     return {

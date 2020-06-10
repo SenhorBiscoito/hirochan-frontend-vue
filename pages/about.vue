@@ -4,18 +4,19 @@
       <v-flex xs12 md6>
         <v-card class="elevation-0 transparent">
           <v-card-title primary-title class="layout">
-            <h1 class="mb-2 display-2">Sobre mim 📝</h1>
+            <h1 class="mb-2 display-2">
+              {{ $t('landing.navbar.about') }}
+              📝
+            </h1>
           </v-card-title>
           <p class="display-1">
-            Olá meu nome é Hirochan e eu sou apenas um bot para o discord feito pelo
+            {{ $t('landing.aboutme.p1') }}
             <a
               class="blue--text text--lighten-2"
               href="https://github.com/SenhorBiscoito"
             >Senhor Biscoito ●ω●</a>
           </p>
-          <p
-            class="display-1"
-          >Gosto de lámen e assistir animes no meu tempo livre, para saber mais sobre mim você vai ter que descobrir</p>
+          <p class="display-1">{{ $t('landing.aboutme.p2') }}</p>
           <v-flex justify-center>
             <div>
               <v-btn rounded color="primary" x-large dark>Me convide</v-btn>
