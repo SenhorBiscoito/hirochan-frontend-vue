@@ -34,34 +34,42 @@
     </v-toolbar>
 
     <!--  -->
-    <v-navigation-drawer v-model="rightDrawer" :right="true" temporary fixed>
-      <div class="list-item">
-        <nuxt-link to="/donate">
-          <v-btn class="yellow lighten-3 tollbar-option button-drawer">
-            <v-icon class="mr-2">fas fa-piggy-bank</v-icon>Donate
-          </v-btn>
-        </nuxt-link>
-      </div>
-      <div class="list-item">
-        <nuxt-link to="/about">
-          <v-btn class="green lighten-3 tollbar-option button-drawer">
-            <v-icon class="mr-2">fas fa-clipboard</v-icon>Sobre mim
-          </v-btn>
-        </nuxt-link>
-      </div>
-      <div class="list-item">
-        <nuxt-link to="/commands">
-          <v-btn class="red lighten-3 tollbar-option button-drawer">
-            <v-icon class="mr-2">fas fa-terminal</v-icon>Comandos
-          </v-btn>
-        </nuxt-link>
-      </div>
-      <div class="list-item">
-        <nuxt-link to="/dashboard">
-          <v-btn class="blue lighten-3 button-drawer">
-            <v-icon class="mr-2">fas fa-cogs</v-icon>Painel de Controle
-          </v-btn>
-        </nuxt-link>
+    <v-navigation-drawer
+      class="d-flex flex-reverse"
+      v-model="rightDrawer"
+      :right="true"
+      temporary
+      fixed
+    >
+      <div class="d-flex flex-column-reverse">
+        <div class="list-item">
+          <nuxt-link to="/donate">
+            <v-btn class="yellow lighten-3 tollbar-option button-drawer">
+              <v-icon class="mr-2">fas fa-piggy-bank</v-icon>Donate
+            </v-btn>
+          </nuxt-link>
+        </div>
+        <div class="list-item">
+          <nuxt-link to="/about">
+            <v-btn class="green lighten-3 tollbar-option button-drawer">
+              <v-icon class="mr-2">fas fa-clipboard</v-icon>Sobre mim
+            </v-btn>
+          </nuxt-link>
+        </div>
+        <div class="list-item">
+          <nuxt-link to="/commands">
+            <v-btn class="red lighten-3 tollbar-option button-drawer">
+              <v-icon class="mr-2">fas fa-terminal</v-icon>Comandos
+            </v-btn>
+          </nuxt-link>
+        </div>
+        <div class="list-item">
+          <nuxt-link to="/dashboard">
+            <v-btn class="blue lighten-3 button-drawer">
+              <v-icon class="mr-2">fas fa-cogs</v-icon>Painel de Controle
+            </v-btn>
+          </nuxt-link>
+        </div>
       </div>
     </v-navigation-drawer>
   </div>
@@ -97,8 +105,8 @@ export default {
 .button-drawer {
   width: 100%;
 }
-.list-item{
-  height: 10%;
+.list-item {
+  height: 50px;
 }
 div.navbar button {
   height: 100% !important;
