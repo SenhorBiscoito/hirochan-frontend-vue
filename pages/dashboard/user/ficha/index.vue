@@ -184,10 +184,10 @@ export default {
         this.form.historia
       );
     },
-    isEdit(){
-      if(this.ficha){
+    isEdit() {
+      if (this.ficha) {
         return true;
-      } 
+      }
       return false;
     },
     ...mapGetters({
@@ -274,11 +274,20 @@ export default {
         formData.append("nao_gosta_de", this.form.nao_gosta_de);
         formData.append("personalidade", this.form.personalidade);
         formData.append("poderes", this.form.poderes);
-        if (!this.ficha)
+        if (this.form.image)
           formData.append("image", this.form.image, this.form.image.name);
 
-        if (!this.ficha) {
-          if (this.form.image != null) {
+        if (this.ficha) {
+          try {
+            const data = await this.post(`/api/v1/fichas`, formData);
+            console.log(data);
+            this.snackbar = true;
+            this.scrollTop();
+          } catch (e) {
+            console.log(e);
+          }
+        } else {
+          if (this.form.image) {
             try {
               const data = await this.post(`/api/v1/fichas`, formData);
               console.log(data);
@@ -287,17 +296,8 @@ export default {
             } catch (e) {
               console.log(e);
             }
-          } else {
-            alert("Você precisa escolher uma imagem para enviar");
-          }
-        } else {
-          try {
-            const data = await this.post(`/api/v1/fichas`, formData);
-            console.log(data);
-            this.snackbar = true;
-            this.scrollTop();
-          } catch (e) {
-            console.log(e);
+          } else{
+            alert("Selecione uma imagem")
           }
         }
       }
