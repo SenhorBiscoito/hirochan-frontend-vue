@@ -54,11 +54,11 @@ export default {
     optionsPath: './vuetify.options.js'
   },
   env: {
-    baseUrl: 'http://localhost:8080',
-    baseUrlFront: 'http://localhost:3000',
+    // baseUrl: 'http://localhost:8080',
+    // baseUrlFront: 'http://localhost:3000',
 
-    // baseUrl: 'https://hirochan.herokuapp.com',
-    // baseUrlFront: 'http://hirochan-website.s3-website-sa-east-1.amazonaws.com',
+    baseUrl: 'https://hirochan.herokuapp.com',
+    baseUrlFront: 'http://hirochan-website.s3-website-sa-east-1.amazonaws.com',
   },
   /*
    ** Build configuration

@@ -1,9 +1,9 @@
 <template>
   <v-card class="mx-auto" elevation="10">
     <v-card-title>
-      <h2 class="display-1">Fichas de {{user.username}}</h2>
+      <h2 class="display-1">{{$t("dashboard.table.title")}} {{user.username}}</h2>
       <v-spacer></v-spacer>
-      <v-btn class="ma-2" tile color="indigo" outlined dark @click="newFicha">Nova Ficha</v-btn>
+      <v-btn class="ma-2" tile color="indigo" outlined dark @click="newFicha">{{$t("dashboard.table.new")}}</v-btn>
     </v-card-title>
     <v-card-title>
       <v-text-field
@@ -97,14 +97,14 @@ export default {
     },
     newFicha() {
       this.$store.commit("ficha/update", null);
-      this.$router.push("/dashboard/user/ficha");
+      this.$router.push("/dashboard/fichas/ficha");
     },
     editItem(item) {
       this.editedIndex = this.data.indexOf(item);
       this.editedItem = Object.assign({}, item);
 
       this.$store.commit("ficha/update", this.editedItem);
-      this.$router.push("/dashboard/user/ficha");
+      this.$router.push("/dashboard/fichas/ficha");
     },
     async deleteItem(item) {
       const { ficha } = item;

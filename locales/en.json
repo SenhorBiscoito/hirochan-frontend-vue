@@ -29,5 +29,28 @@
   "footer": {
     "made": "Made with",
     "by": "by"
+  },
+
+  "dashboard": {
+    "sidebar": {
+      "server": "Your servers",
+      "ficha": "Record"
+    },
+    "servers": {
+      "title": "Your server list",
+      "adm": "Administrator",
+      "owner": "Owner",
+      "config": "Configure server"
+    },
+    "table": {
+      "title": "Bookmarks of",
+      "ficha": "record",
+      "nome": "name",
+      "idade": "age",
+      "sexo": "sex",
+      "genero": "Genero",
+      "opcoes": "Options",
+      "new": "New Record"
+    }
   }
 }

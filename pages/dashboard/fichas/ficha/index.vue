@@ -322,7 +322,7 @@ export default {
       console.log(this.ficha);
     },
     back() {
-      this.$router.push("/dashboard/user");
+      this.$router.push("/dashboard/fichas");
     }
   }
 };

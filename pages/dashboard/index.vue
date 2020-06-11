@@ -1,7 +1,7 @@
 <template>
   <v-card class="mx-auto" elevation="10" v-if="guilds">
     <v-card-title>
-      <h2 class="display-1">Lista de servidores</h2>
+      <h2 class="display-1">{{$t("dashboard.servers.title")}}</h2>
     </v-card-title>
     <!-- GRID -->
     <v-flex xs12>
@@ -18,11 +18,11 @@
                 <v-card-title>{{guild.name}}</v-card-title>
               </v-img>
 
-              <v-card-subtitle class="pb-0" v-if="guild.owner">Dono</v-card-subtitle>
-              <v-card-subtitle v-else>Administrador</v-card-subtitle>
+              <v-card-subtitle class="pb-0" v-if="guild.owner">{{$t("dashboard.servers.owner")}}</v-card-subtitle>
+              <v-card-subtitle v-else>{{$t("dashboard.servers.adm")}}</v-card-subtitle>
 
               <v-card-actions>
-                <v-btn color="orange" text>Configurar Servidor</v-btn>
+                <v-btn color="orange" text>{{$t("dashboard.servers.config")}}</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>

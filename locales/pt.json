@@ -31,14 +31,25 @@
     "by": "pelo"
   },
   "dashboard": {
-    "servers": {
-      "title": "",
-      "adm": "",
-      "owner": "",
-      "config": ""
+    "sidebar": {
+      "server": "Seus servidores",
+      "ficha": "Fichas"
     },
-    "users": {
-      "title": ""
+    "servers": {
+      "title": "Sua lista de servidores",
+      "adm": "Administrador",
+      "owner": "Dono",
+      "config": "Configurar servidor"
+    },
+    "table": {
+      "title": "Fichas de",
+      "ficha": "Ficha",
+      "nome": "Nome",
+      "idade": "Idade",
+      "sexo": "Sexo",
+      "genero": "Genero",
+      "opcoes": "Opções",
+      "new": "Nova Ficha"
     }
   }
 }

@@ -29,5 +29,28 @@
   "footer": {
     "made": "Hecho con",
     "by": "por"
+  },
+
+  "dashboard": {
+    "sidebar": {
+      "server": "Sus servidores",
+      "ficha": "Grabar"
+    },
+    "servers": {
+      "title": "Su lista de servidores",
+      "adm": "Administrador",
+      "owner": "Propietario",
+      "config": "Configurar servidor"
+    },
+    "table": {
+      "title": "Marcadores del",
+      "ficha": "registro",
+      "nome": "nombre",
+      "idade": "edad",
+      "sexo": "sexo",
+      "genero": "Genero",
+      "opcoes": "Opciones",
+      "nuevo": "Nuevo registro"
+    }
   }
 }

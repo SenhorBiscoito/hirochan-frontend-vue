@@ -8,7 +8,7 @@
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
+            <v-list-item-title v-text="`${$t('dashboard.sidebar.' + item.title )}`" />
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -74,13 +74,13 @@ export default {
       items: [
         {
           icon: "fas fa-cogs",
-          title: "Seus servidores",
+          title: "server",
           to: "/dashboard"
         },
         {
-          icon: "mdi-chart-bubble",
-          title: "User",
-          to: "/dashboard/user"
+          icon: "fas fa-clipboard",
+          title: "ficha",
+          to: "/dashboard/fichas"
         }
       ],
       miniVariant: false,
