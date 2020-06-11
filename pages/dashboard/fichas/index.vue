@@ -3,7 +3,14 @@
     <v-card-title>
       <h2 class="display-1">{{$t("dashboard.table.title")}} {{user.username}}</h2>
       <v-spacer></v-spacer>
-      <v-btn class="ma-2" tile color="indigo" outlined dark @click="newFicha">{{$t("dashboard.table.new")}}</v-btn>
+      <v-btn
+        class="ma-2"
+        tile
+        color="indigo"
+        outlined
+        dark
+        @click="newFicha"
+      >{{$t("dashboard.table.new")}}</v-btn>
     </v-card-title>
     <v-card-title>
       <v-text-field
@@ -41,7 +48,26 @@ export default {
     ...mapGetters({
       session: "session/get",
       user: "discord/user/get"
-    })
+    }),
+    headers() {
+      return [
+        {
+          text: this.$i18n.t("dashboard.table.ficha"),
+          align: "start",
+          sortable: true,
+          value: "ficha"
+        },
+        { text: this.$i18n.t("dashboard.table.nome"), value: "nome" },
+        { text: this.$i18n.t("dashboard.table.idade"), value: "idade" },
+        { text: this.$i18n.t("dashboard.table.sexo"), value: "nome_sexo" },
+        { text: this.$i18n.t("dashboard.table.genero"), value: "nome_genero" },
+        {
+          text: this.$i18n.t("dashboard.table.opcoes"),
+          value: "actions",
+          sortable: false
+        }
+      ];
+    }
   },
   async mounted() {
     this.initialize();
@@ -52,19 +78,7 @@ export default {
       selected: [],
       search: "",
       loadingText: "Carregando suas fichas... Aguarde",
-      headers: [
-        {
-          text: "Ficha",
-          align: "start",
-          sortable: true,
-          value: "ficha"
-        },
-        { text: "Nome", value: "nome" },
-        { text: "Idade", value: "idade" },
-        { text: "Sexo", value: "nome_sexo" },
-        { text: "Genero", value: "nome_genero" },
-        { text: "Opções", value: "actions", sortable: false }
-      ],
+
       data: [],
       editedIndex: -1,
       editedItem: {

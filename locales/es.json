@@ -44,13 +44,39 @@
     },
     "table": {
       "title": "Marcadores del",
-      "ficha": "registro",
-      "nome": "nombre",
-      "idade": "edad",
-      "sexo": "sexo",
+      "ficha": "Registro",
+      "nome": "Nombre",
+      "idade": "Edad",
+      "sexo": "Sexo",
       "genero": "Genero",
+
+      "personalidade": "Personalidade",
+      "poderes": "Poderes",
+      "gosta_de": "Me gusta",
+      "nao_gosta_de": "No me gusta",
+      "historia": "Historia",
+      "image": "Imagen",
+
       "opcoes": "Opciones",
       "nuevo": "Nuevo registro"
+    },
+    "input": {
+      "ficha": "Ingrese el nombre de su registro ord 😉",
+      "nome": "Ingresa el nombre de tu personaje 😀",
+      "idade": "Sé honesto",
+      "sexo": "¿Cuál es tu sexo? 😏",
+      "genero": "¿Cuál es tu género? 😮",
+      "personalidade": "¿Cómo es tu personaje? 🤔",
+      "poderes": "¿Tienes poderes? 😮",
+      "gosto_de": "¿Qué le gusta a tu personaje? 🤔",
+      "nao_gosta_de": "¿Qué no le gusta a tu personaje? 😱",
+      "historia": "Envía la historia de tu personaje😎",
+      "image": "Foto de tu personaje 📸"
+    },
+    "buttons": {
+      "reset": "Reiniciar",
+      "send": "Enviar",
+      "back": "Vuelve"
     }
   }
 }

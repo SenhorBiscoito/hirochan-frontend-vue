@@ -43,14 +43,40 @@
       "config": "Configure server"
     },
     "table": {
-      "title": "Bookmarks of",
-      "ficha": "record",
-      "nome": "name",
-      "idade": "age",
-      "sexo": "sex",
-      "genero": "Genero",
+      "title": "Bookmarks",
+      "ficha": "Record",
+      "nome": "Name",
+      "idade": "Age",
+      "sex": "Sex",
+
+      "personalidade": "Personalidade",
+      "poderes": "Powers",
+      "gosta_de": "Likes",
+      "nao_gosta_de": "Does not like",
+      "historia": "Historia",
+      "image": "Image",
+
+      "genero": "Gender",
       "opcoes": "Options",
       "new": "New Record"
+    },
+    "input": {
+      "ficha": "Enter the name of your record ord 😉",
+      "name": "Enter your character name 😀",
+      "idade": "Be honest",
+      "sexo": "What is your sex? 😏",
+      "genero": "What is your gender? 😮",
+      "personalidade": "What is your character like? 🤔",
+      "poderes": "Do you have powers? 😮",
+      "gosta_de": "What does your character like? 🤔",
+      "nao_gosta_de": "What doesn't your character like? 😱",
+      "historia": "Send the story of your character😎",
+      "image": "Photo of your character 📸"
+    },
+    "buttons": {
+      "reset": "Reset",
+      "send": "Send",
+      "back": "Back"
     }
   }
 }

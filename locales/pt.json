@@ -47,9 +47,35 @@
       "nome": "Nome",
       "idade": "Idade",
       "sexo": "Sexo",
+
+      "personalidade": "Personalidade",
+      "poderes": "Poderes",
+      "gosta_de": "Gosta",
+      "nao_gosta_de": "Não Gosta",
+      "historia": "História",
+      "image": "Imagem",
+
       "genero": "Genero",
       "opcoes": "Opções",
       "new": "Nova Ficha"
+    },
+    "input": {
+      "ficha": "Digite o nome da sua ficha do discord 😉",
+      "nome": "Digite o nome do seu personagem 😀",
+      "idade": "Seja Honesto",
+      "sexo": "Qual é o seu sexo? 😏",
+      "genero": "Qual é o seu genero? 😮",
+      "personalidade": "Como seu personagem é? 🤔",
+      "poderes": "Você tem poderes? 😮",
+      "gosta_de": "Do que seu personagem gosta? 🤔",
+      "nao_gosta_de": "Do que seu personagem não gosta? 😱",
+      "historia": "Manda aí a história do seu personagem😎",
+      "image": "Foto do seu personagem 📸"
+    },
+    "buttons": {
+      "reset": "Resetar",
+      "send": "Enviar",
+      "back": "Voltar"
     }
   }
 }

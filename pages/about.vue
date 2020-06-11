@@ -18,9 +18,9 @@
           </p>
           <p class="display-1">{{ $t('landing.aboutme.p2') }}</p>
           <v-flex justify-center>
-            <div>
-              <v-btn rounded color="primary" x-large dark>Me convide</v-btn>
-            </div>
+            <a href="https://discord.com/api/oauth2/authorize?client_id=719946098780798986&permissions=8&redirect_uri=http%3A%2F%2Fhirochan.herokuapp.com%2Fauth%2Fredirect&scope=bot">
+              <v-btn rounded color="primary" x-large dark>{{$t("landing.home.invite")}}</v-btn>
+            </a>
           </v-flex>
         </v-card>
       </v-flex>

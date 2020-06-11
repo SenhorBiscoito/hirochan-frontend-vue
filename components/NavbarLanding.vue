@@ -43,7 +43,7 @@
       fixed
     >
       <div class="d-flex flex-column-reverse">
-        <div class="list-item">
+        <div class="list-item text-left">
           <nuxt-link to="/about">
             <v-btn class="green lighten-3 tollbar-option button-drawer">
               <v-icon class="mr-2">fas fa-clipboard</v-icon>
@@ -51,7 +51,7 @@
             </v-btn>
           </nuxt-link>
         </div>
-        <div class="list-item">
+        <div class="list-item text-left">
           <nuxt-link to="/commands">
             <v-btn class="red lighten-3 tollbar-option button-drawer">
               <v-icon class="mr-2">fas fa-terminal</v-icon>
@@ -59,9 +59,9 @@
             </v-btn>
           </nuxt-link>
         </div>
-        <div class="list-item">
+        <div class="list-item text-left">
           <nuxt-link to="/dashboard">
-            <v-btn class="blue lighten-3 button-drawer">
+            <v-btn class="blue lighten-3 tollbar-option button-drawer">
               <v-icon class="mr-2">fas fa-cogs</v-icon>
               {{$t("landing.navbar.control")}}
             </v-btn>
@@ -106,7 +106,7 @@ export default {
   width: 100%;
 }
 .list-item {
-  height: 50px;
+  height: 5rem;
 }
 div.navbar button {
   height: 100% !important;

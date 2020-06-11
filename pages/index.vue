@@ -7,18 +7,29 @@
           height="600"
           style="background-color: rgba(0, 0, 0, 0.9)"
         >
-          <v-overlay :absolute="true" :value="true">
+          <v-overlay class="overlay-main" :absolute="true" :value="true">
             <v-layout column align-center justify-center class="white--text">
               <h1 class="white--text mb-2 display-2 text-center">{{ $t('landing.home.maintitle') }}</h1>
               <div
                 class="white--text subheading mb-3 text-xs-center"
               >{{ $t('landing.home.mainsub') }}</div>
-              <nuxt-link to="/dashboard">
-                <v-btn class="blue lighten-2 mt-5" rounded dark x-large>
-                  {{ $t('landing.home.login') }}
-                  <v-icon class="ml-2">fas fa-sign-in-alt</v-icon>
-                </v-btn>
-              </nuxt-link>
+            </v-layout>
+
+            <v-layout column align-center justify-center class="my-6">
+              <v-flex>
+                <nuxt-link to="/dashboard">
+                  <v-btn class="blue lighten-2" rounded dark x-large>
+                    {{ $t('landing.home.login') }}
+                    <v-icon class="ml-2">fas fa-sign-in-alt</v-icon>
+                  </v-btn>
+                </nuxt-link>
+
+                <a
+                  href="https://discord.com/api/oauth2/authorize?client_id=719946098780798986&permissions=8&redirect_uri=http%3A%2F%2Fhirochan.herokuapp.com%2Fauth%2Fredirect&scope=bot"
+                >
+                  <v-btn rounded color="primary" x-large dark>{{$t("landing.home.invite")}}</v-btn>
+                </a>
+              </v-flex>
             </v-layout>
           </v-overlay>
         </v-parallax>
@@ -53,72 +64,6 @@
           </v-flex>
         </v-layout>
       </section>
-      <!-- 
-      <section>
-        <v-parallax :src="imageLink.main" height="380">
-          <v-layout column align-center justify-center>
-            <div
-              class="headline white--text mb-3 text-xs-center"
-            >Endorfine is a social network that allows everyone to reach a huge audience with a tap</div>
-            <em>With the power of Endorfine you don't need to be famous or post pics of cute cats in order to get visibility</em>
-            <v-btn class="blue lighten-2 mt-5" dark large href="/pre-made-themes">Get more info</v-btn>
-          </v-layout>
-        </v-parallax>
-      </section>
-
-      <section>
-        <v-parallax :src="imageLink.social_cover" height="380">
-          <v-layout column align-center justify-center>
-            <div
-              class="headline white--text mb-3 text-xs-center"
-            >We are dropping cool news and opportunities on socials</div>
-          </v-layout>
-          <v-layout justify-space-around justify-center>
-            <v-icon x-large dark>fab fa-facebook-f</v-icon>
-
-            <v-icon x-large dark>fab fa-twitter</v-icon>
-
-            <v-icon x-large dark>fab fa-reddit-alien</v-icon>
-
-            <v-icon x-large dark>fab fa-instagram</v-icon>
-
-            <v-icon x-large dark>fab fa-discord</v-icon>
-          </v-layout>
-        </v-parallax>
-      </section>
-
-      <section>
-        <v-container grid-list-xl>
-          <v-layout row wrap justify-center class="my-5">
-            <v-flex xs12 sm4>
-              <v-card class="elevation-0 transparent">
-                <v-card-title primary-title class="layout justify-center">
-                  <div class="headline">Company info</div>
-                </v-card-title>
-                <v-card-text>We are not a company. We hate companies. Just imagine us like the guys from the Silicon Valley series.</v-card-text>
-              </v-card>
-            </v-flex>
-            <v-flex xs12 sm4 offset-sm1>
-              <v-card class="elevation-0 transparent">
-                <v-card-title primary-title class="layout justify-center">
-                  <div class="headline">We are hiring</div>
-                </v-card-title>
-                <v-card-text>Are you a creative person? Do you like techy stuff? Complete the email form by writing your skills and interests</v-card-text>
-              </v-card>
-            </v-flex>
-          </v-layout>
-        </v-container>
-      </section>
-
-      <section>
-        <v-container>
-          <v-layout>
-            <v-flex xs12 class="text-xs-center">
-              <img height="200px" :src="imageLink.logo" />
-            </v-flex>
-          </v-layout>
-        </v-container>
-      </section>-->
     </v-content>
   </div>
 </template>
@@ -188,6 +133,9 @@ export default {
 </script>
 
 <style scoped>
+.overlay-main{
+  padding-top: 10rem;
+}
 .features i {
   font-size: 40px;
 }

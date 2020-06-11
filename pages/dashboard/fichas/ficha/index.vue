@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="d-flex justify-end">
-      <v-btn class="ma-2 mr-0" color="primary" @click="back">Voltar</v-btn>
+      <v-btn class="ma-2 mr-0" color="primary" @click="back">{{$t("dashboard.buttons.back")}}</v-btn>
     </div>
 
     <v-card class="mx-auto" elevation="10">
@@ -20,8 +20,8 @@
                 :rules="rules.ficha"
                 :disabled="isEdit"
                 outlined
-                label="Ficha"
-                placeholder="Digite o nome da sua ficha do discord 😉"
+                :label="$t('dashboard.table.ficha')"
+                :placeholder="$t('dashboard.input.ficha')"
                 required
               ></v-text-field>
             </v-col>
@@ -34,8 +34,8 @@
                 <v-slider
                   v-model="form.idade"
                   :rules="rules.idade"
-                  label="Idade"
-                  hint="Seja honesto"
+                  :label="$t('dashboard.table.idade')"
+                  :hint="$t('dashboard.input.idade')"
                   min="10"
                   max="50"
                   :thumb-size="24"
@@ -48,8 +48,8 @@
               <v-text-field
                 v-model="form.nome"
                 :rules="rules.nome"
-                label="Nome"
-                placeholder="Digite o nome do seu personagem 😀"
+                :label="$t('dashboard.table.nome')"
+                :placeholder="$t('dashboard.input.nome')"
                 outlined
                 required
               ></v-text-field>
@@ -61,8 +61,8 @@
                 v-model="form.id_genero"
                 :items="generos"
                 :rules="rules.id_genero"
-                label="Genero"
-                placeholder="Qual é o seu genero? 😮"
+                :label="$t('dashboard.table.genero')"
+                :placeholder="$t('dashboard.input.genero')"
                 item-text="nome"
                 item-value="id_genero"
                 required
@@ -75,8 +75,8 @@
                 :items="sexos"
                 :rules="rules.id_sexo"
                 outlined
-                placeholder="Qual é o seu sexo? 😏"
-                label="Sexo"
+                :label="$t('dashboard.table.sexo')"
+                :placeholder="$t('dashboard.input.sexo')"
                 item-text="nome"
                 item-value="id_sexo"
                 required
@@ -87,8 +87,8 @@
               <v-textarea
                 v-model="form.personalidade"
                 :rules="rules.personalidade"
-                placeholder="Como seu personagem é? 🤔"
-                label="Personalidade"
+                :placeholder="$t('dashboard.input.personalidade')"
+                :label="$t('dashboard.table.personalidade')"
                 outlined
               ></v-textarea>
             </v-col>
@@ -96,9 +96,9 @@
             <v-col cols="12" sm="6">
               <v-textarea
                 v-model="form.poderes"
-                placeholder="Você tem poderes? 😮"
+                :placeholder="$t('dashboard.input.poderes')"
                 :rules="rules.poderes"
-                label="Poderes"
+                :label="$t('dashboard.table.poderes')"
                 outlined
               ></v-textarea>
             </v-col>
@@ -107,8 +107,8 @@
               <v-textarea
                 v-model="form.gosta_de"
                 :rules="rules.gosta_de"
-                label="Gostos"
-                placeholder="Do que seu personagem gosta? 🤔"
+                :label="$t('dashboard.table.gosta_de')"
+                :placeholder="$t('dashboard.input.gosta_de')"
                 outlined
               ></v-textarea>
             </v-col>
@@ -117,8 +117,8 @@
               <v-textarea
                 v-model="form.nao_gosta_de"
                 :rules="rules.nao_gosta_de"
-                label="Não gosta"
-                placeholder="Do que seu personagem não gosta? 😱"
+                :label="$t('dashboard.table.nao_gosta_de')"
+                :placeholder="$t('dashboard.input.nao_gosta_de')"
                 outlined
               ></v-textarea>
             </v-col>
@@ -127,8 +127,8 @@
               <v-textarea
                 v-model="form.historia"
                 :rules="rules.historia"
-                label="História"
-                placeholder="Manda aí a história do seu personagem😎"
+                :label="$t('dashboard.table.historia')"
+                :placeholder="$t('dashboard.input.historia')"
                 outlined
               ></v-textarea>
             </v-col>
@@ -137,17 +137,17 @@
                 v-model="form.image"
                 :rules="rules.image"
                 accept="image/png, image/jpeg, image/gif"
-                placeholder="Foto do seu personagem 📸"
+                :placeholder="$t('dashboard.input.image')"
                 outlined
                 append-icon="mdi-camera"
-                label="Avatar"
+                :label="$t('dashboard.table.image')"
               ></v-file-input>
             </v-col>
           </v-row>
         </v-container>
         <v-card-actions class="d-flex justify-end">
-          <v-btn @click="resetForm" class="warning">Resetar</v-btn>
-          <v-btn class="mr-4 primary" @click="submit">Enviar</v-btn>
+          <v-btn @click="resetForm" class="warning">{{$t("dashboard.buttons.reset")}}</v-btn>
+          <v-btn class="mr-4 primary" @click="submit">{{$t("dashboard.buttons.send")}}</v-btn>
         </v-card-actions>
       </v-form>
     </v-card>
@@ -282,6 +282,7 @@ export default {
             const data = await this.post(`/api/v1/fichas`, formData);
             console.log(data);
             this.snackbar = true;
+            this.sucessMessage = "Ficha editada com sucesso";
             this.scrollTop();
           } catch (e) {
             console.log(e);
@@ -292,12 +293,14 @@ export default {
               const data = await this.post(`/api/v1/fichas`, formData);
               console.log(data);
               this.snackbar = true;
+              this.sucessMessage = "Ficha criada com sucesso";
+
               this.scrollTop();
             } catch (e) {
               console.log(e);
             }
-          } else{
-            alert("Selecione uma imagem")
+          } else {
+            alert("Selecione uma imagem");
           }
         }
       }
