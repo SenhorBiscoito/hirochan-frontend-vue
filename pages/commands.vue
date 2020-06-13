@@ -1,11 +1,10 @@
 <template>
   <v-container fluid>
     <v-row v-for="(table, index) of tables" :key="index">
-
       <v-col cols="12">
         <v-row align="center" justify="center">
           <!-- Ações -->
-          <v-card class="mt-5" max-width="75%">
+          <v-card class="mt-5 commands" max-width="75%">
             <v-card-title>
               <h2 class="display-1">{{table.title}}</h2>
             </v-card-title>
@@ -106,25 +105,12 @@ export default {
           header: ["Comando", "Descrição", "Usage", "Aliases"],
           row: [
             {
-              comando: "cat",
-              descricao:
-                "Manda uma foto bonitinha de um gatinho fofo (se você não gosta de gatinhos não fale comigo 😤)",
-              usage: "[command]",
-              aliases: "gato, gatinho, hirochan"
-            },
-            {
               comando: "chucknorris",
               descricao: "Manda uma curiosidade do Chucknorris a lenda",
               usage: "[command]",
               aliases: ""
             },
-            {
-              comando: "dog",
-              descricao:
-                "Para não deixar quem gosta de cachorro triste você pode chamar uma foto até que legalzinha de um dog 🤭",
-              usage: "[command]",
-              aliases: "cachorro"
-            },
+
             {
               comando: "love",
               descricao:
@@ -140,10 +126,50 @@ export default {
               aliases: ""
             },
             {
+              comando: "pokedex",
+              descricao:
+                "Procura um pokemon e mostra os status como uma pokedex 😎",
+              usage: "[command]",
+              aliases: "poke"
+            },
+            {
+              comando: "poolreact",
+              descricao:
+                'Comando para reagir ("comando + tempo"s/m"" + mensagem)',
+              usage: "[command]",
+              aliases: "react"
+            },
+            {
               comando: "rps",
               descricao:
                 "Bora jogar pedra papel e tesoura, quem perder lava a louça 😂",
               usage: "command",
+              aliases: ""
+            }
+          ]
+        },
+        {
+          title: "Image",
+          header: ["Comando", "Descrição", "Usage", "Aliases"],
+          row: [
+            {
+              comando: "cat",
+              descricao:
+                "Manda uma foto bonitinha de um gatinho fofo (se você não gosta de gatinhos não fale comigo 😤)",
+              usage: "[command]",
+              aliases: "gato, gatinho, hirochan"
+            },
+            {
+              comando: "dog",
+              descricao:
+                "Para não deixar quem gosta de cachorro triste você pode chamar uma foto até que legalzinha de um dog 🤭",
+              usage: "[command]",
+              aliases: "cachorro"
+            },
+            {
+              comando: "pokemon",
+              descricao: "Procura uma imagem de algum pokemon 😎",
+              usage: "[command]",
               aliases: ""
             }
           ]
@@ -179,6 +205,12 @@ export default {
                 "Você é stalker ou quer saber mais sobre alguém? Consigo saber tudo sobre ela! Use esse comando e marca ela para vermos quem é 😎",
               usage: "[command | mention]",
               aliases: ""
+            },
+            {
+              comando: "youtube",
+              descricao: "Pesquisar videos no youtube",
+              usage: "[command | mention]",
+              aliases: "search"
             }
           ]
         },
@@ -230,6 +262,55 @@ export default {
           ]
         },
         {
+          title: "MUSIC",
+          header: ["Comando", "Descrição", "Usage", "Aliases"],
+          row: [
+            {
+              comando: "pause",
+              descricao: "Pausa a música que está tocando",
+              usage: "[command]",
+              aliases: ""
+            },
+            {
+              comando: "play",
+              descricao: "Tocar as musiquinhas",
+              usage: "[command | music_url]",
+              aliases: "p"
+            },
+            {
+              comando: "queue",
+              descricao: "Mostra as musicas que estão na lista",
+              usage: "[command]",
+              aliases: ""
+            },
+            {
+              comando: "resume",
+              descricao: "Voltar a tocar a musiquinha",
+              usage: "[command]",
+              aliases: "re"
+            },
+            {
+              comando: "skip",
+              descricao: "Pula a musiquinha que está tocando",
+              usage: "[command]",
+              aliases: ""
+            },
+            {
+              comando: "stop",
+              descricao: "Pula a musiquinha que está tocando",
+              usage: "[command]",
+              aliases: "kill"
+            },
+            {
+              comando: "volume",
+              descricao:
+                "Comentei no código pq pode deixar os amiguinhos surdos, mas está lá comentado",
+              usage: "[command]",
+              aliases: ""
+            }
+          ]
+        },
+        {
           title: "RPG",
           header: ["Comando", "Descrição", "Usage", "Aliases"],
           row: [
@@ -247,3 +328,9 @@ export default {
   }
 };
 </script>
+
+<style lang="css" scoped>
+.commands{
+  width: 100%;
+}
+</style>

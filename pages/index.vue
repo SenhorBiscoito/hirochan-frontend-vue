@@ -82,17 +82,6 @@ export default {
         social_cover:
           "https://firebasestorage.googleapis.com/v0/b/endorfinevue.appspot.com/o/assets%2Fo-NIGHTCLUB-facebook.jpg?alt=media&token=cefc5c4c-9714-41da-9c22-f63caf5e89a4"
       },
-      email: "",
-      emailRules: [
-        v => {
-          return !!v || "E-mail is required";
-        },
-        v =>
-          /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
-          "E-mail must be valid"
-      ],
-      subscribed: false,
-      baseUrlFront: process.env.baseUrlFront,
       features: [
         {
           icon: "fas fa-comment-dots",
@@ -111,29 +100,12 @@ export default {
         }
       ]
     };
-  },
-  methods: {
-    subscribe: function() {
-      this.subscribed = !this.subscribed;
-    }
-  },
-
-  computed: {
-    imgHeight: function() {
-      var offset = 320;
-      console.log("new image height is " + (this.pageHeight - offset));
-      return this.pageHeight - offset;
-    }
-  },
-
-  mounted: function() {
-    // this.calculateHeight();
   }
 };
 </script>
 
 <style scoped>
-.overlay-main{
+.overlay-main {
   padding-top: 10rem;
 }
 .features i {
