@@ -1,4 +1,4 @@
-# hitochan ●ω●
+# hirochan ●ω●
 
 > Frontend da aplicação Hirochan
 
