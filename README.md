@@ -1,4 +1,4 @@
-# sam-jolteon
+# hitochan ●ω●
 
 > Frontend da aplicação Hirochan
 
